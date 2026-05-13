@@ -1,0 +1,65 @@
+"use client";
+
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { API_QUERY_ENABLED } from "@constants/index";
+import { useGetProducts } from "@/react-query/queries/useProducts";
+import ProductCard from "./ProductCard";
+
+export default function ProductCarousel() {
+  const { data, isFetching } = useGetProducts(
+    { page: 0, size: 8 },
+    { enabled: API_QUERY_ENABLED.PRODUCTS },
+  );
+
+  const products = data?.content ?? [];
+
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true, align: "start", slidesToScroll: 1 },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
+
+  if (isFetching) {
+    return (
+      <section aria-label="추천 상품">
+        <div className="py-8 text-center text-sm text-gray-500">불러오는 중…</div>
+      </section>
+    );
+  }
+
+  if (!API_QUERY_ENABLED.PRODUCTS) {
+    return (
+      <section aria-label="추천 상품">
+        <div className="py-8 text-center text-sm text-amber-900">
+          캐러셀은 <code className="rounded bg-amber-100 px-1 text-xs">API_QUERY_ENABLED.PRODUCTS</code>를
+          true로 설정한 뒤 표시됩니다.
+        </div>
+      </section>
+    );
+  }
+
+  if (products.length === 0) {
+    return (
+      <section aria-label="추천 상품">
+        <div className="py-8 text-center text-sm text-gray-400">표시할 상품이 없습니다.</div>
+      </section>
+    );
+  }
+
+  return (
+    <section aria-label="추천 상품">
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex gap-4 touch-pan-y">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="flex-none w-[calc(50%-8px)] sm:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)]"
+            >
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

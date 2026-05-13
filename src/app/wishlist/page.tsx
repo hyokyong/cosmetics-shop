@@ -1,0 +1,61 @@
+"use client";
+
+import Link from "next/link";
+import { Heart } from "lucide-react";
+import { useWishlistStore } from "@store/wishlistStore";
+import { Button } from "@components/ui/button";
+import ProductCard from "@components/product/ProductCard";
+import { API_QUERY_ENABLED } from "@constants/index";
+import { useGetProducts } from "@/react-query/queries/useProducts";
+
+export default function WishlistPage() {
+  const { productIds } = useWishlistStore();
+
+  const { data, isFetching } = useGetProducts(
+    { page: 0, size: 200 },
+    { enabled: API_QUERY_ENABLED.PRODUCTS },
+  );
+
+  const allProducts = data?.content ?? [];
+  const wishedProducts = allProducts.filter((p) => productIds.includes(p.id));
+
+  if (wishedProducts.length === 0 && !isFetching) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
+        {!API_QUERY_ENABLED.PRODUCTS && productIds.length > 0 && (
+          <p className="mb-4 text-sm text-amber-900">
+            즐겨찾기 상품 정보는 <code className="rounded bg-amber-100 px-1 text-xs">API_QUERY_ENABLED.PRODUCTS</code>를
+            true로 설정한 뒤 불러옵니다.
+          </p>
+        )}
+        <Heart className="mx-auto h-16 w-16 text-gray-300" />
+        <h2 className="mt-4 text-xl font-semibold text-gray-700">즐겨찾기가 비어 있어요</h2>
+        <p className="mt-2 text-sm text-gray-400">마음에 드는 상품을 즐겨찾기에 추가해보세요!</p>
+        <Button className="mt-8 bg-rose-600 hover:bg-rose-700" asChild>
+          <Link href="/products">상품 둘러보기</Link>
+        </Button>
+      </div>
+    );
+  }
+
+  if (isFetching) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-20 text-center text-gray-500 sm:px-6 lg:px-8">
+        불러오는 중…
+      </div>
+    );
+  }
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <h1 className="mb-8 text-2xl font-bold text-gray-900">
+        즐겨찾기 <span className="text-rose-500">({wishedProducts.length})</span>
+      </h1>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        {wishedProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
+  );
+}
