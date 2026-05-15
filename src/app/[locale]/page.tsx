@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import ProductCarousel from "@components/product/ProductCarousel";
+import ProductCarouselLazy from "@components/product/ProductCarouselLazy";
 import { CATEGORY_VALUES } from "@constants/index";
 import { Button } from "@components/ui/button";
 import { ArrowRight, Sparkles, Shield, Truck } from "lucide-react";
@@ -80,7 +80,7 @@ export default async function HomePage() {
             <ArrowRight className="h-4 w-4 rtl:rotate-180" />
           </Link>
         </div>
-        <ProductCarousel />
+        <ProductCarouselLazy />
       </section>
 
       <section className="py-12" aria-label={t("benefitsTitle")}>
