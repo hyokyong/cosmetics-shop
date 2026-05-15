@@ -45,10 +45,16 @@ src/
 | `gray-*`                        | 텍스트·배경·보더   |
 | `success` / `warning` / `error` | 상태·에러          |
 
-## 백엔드 연동 시 참고
+## API · React Query 구조
 
-- 인증이 필요한 요청은 `axiosWithAuth` 인스턴스를 사용합니다. 토큰·리프레시 처리는 `src/api/axiosInstance/interceptors`에서 담당합니다.
-- API 함수는 `src/api/` 아래 모듈에 정의되어 있고, 화면에서는 `src/react-query/queries/` 훅을 통해 호출하는 구성을 권장합니다.
+**컴포넌트 → React Query 훅 → API 함수 → Axios** 순으로만 호출합니다. 페이지에서 Axios를 직접 쓰지 않습니다.
+
+| 레이어  | 경로                       | 역할                                                                 |
+| ------- | -------------------------- | -------------------------------------------------------------------- |
+| Axios   | `src/api/axiosInstance/`   | `axiosService`(비인증), `axiosWithAuth`(Bearer + 401 refresh)        |
+| API     | `src/api/*.ts`             | `getOrders`, `postLogin` 등 순수 HTTP 함수                           |
+| 훅      | `src/react-query/queries/` | `useGetOrders` → `queryFn: getOrders`, `usePostOrder` → `mutationFn` |
+| 타입·키 | `src/types/`, `QUERY_KEYS` | 요청·응답 타입, 캐시 키                                              |
 
 ## API 목록
 
