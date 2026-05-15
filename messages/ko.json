@@ -143,5 +143,57 @@
     "inactive": "비활성",
     "activate": "활성화",
     "deactivate": "비활성화"
+  },
+  "seo": {
+    "siteName": "GLOWshop",
+    "defaultDescription": "엄선된 국내외 브랜드 화장품을 한 곳에서. 피부 타입에 맞는 스킨케어·메이크업을 만나보세요.",
+    "home": {
+      "title": "GLOWshop — 당신의 피부에 빛을",
+      "description": "스킨케어, 메이크업, 선케어까지. GLOWshop에서 나에게 맞는 화장품을 찾아보세요."
+    },
+    "products": {
+      "title": "전체 상품",
+      "description": "GLOWshop의 전체 화장품 상품을 카테고리별로 둘러보세요."
+    },
+    "productDetail": {
+      "title": "상품 상세",
+      "description": "상품 정보, 옵션, 리뷰를 확인하고 장바구니에 담아보세요."
+    },
+    "category": {
+      "title": "{category} 상품",
+      "description": "{category} 카테고리의 인기 화장품을 GLOWshop에서 만나보세요."
+    },
+    "cart": {
+      "title": "장바구니",
+      "description": "담아 둔 상품을 확인하고 주문을 진행하세요."
+    },
+    "wishlist": {
+      "title": "즐겨찾기",
+      "description": "저장한 관심 상품 목록입니다."
+    },
+    "mypage": {
+      "title": "마이페이지",
+      "description": "주문 내역, 배송지, 계정 정보를 관리하세요."
+    },
+    "login": {
+      "title": "로그인",
+      "description": "GLOWshop 계정으로 로그인하세요."
+    },
+    "signup": {
+      "title": "회원가입",
+      "description": "GLOWshop 회원가입 후 쇼핑을 시작하세요."
+    },
+    "admin": {
+      "title": "관리자",
+      "description": "GLOWshop 관리자 대시보드"
+    },
+    "adminPartners": {
+      "title": "파트너 관리",
+      "description": "입점 파트너를 등록·관리합니다."
+    },
+    "adminProducts": {
+      "title": "상품 관리",
+      "description": "판매 상품을 등록·수정·노출 관리합니다."
+    }
   }
 }

@@ -143,5 +143,57 @@
     "inactive": "غير نشط",
     "activate": "تفعيل",
     "deactivate": "إلغاء التفعيل"
+  },
+  "seo": {
+    "siteName": "GLOWshop",
+    "defaultDescription": "مستحضرات تجميل مختارة في مكان واحد. اعثر على ما يناسب بشرتك.",
+    "home": {
+      "title": "GLOWshop — إشراقة لبشرتك",
+      "description": "العناية بالبشرة والمكياج والحماية من الشمس. اكتشف منتجاتك في GLOWshop."
+    },
+    "products": {
+      "title": "جميع المنتجات",
+      "description": "تصفح كامل كتالوج GLOWshop حسب الفئة."
+    },
+    "productDetail": {
+      "title": "تفاصيل المنتج",
+      "description": "اطلع على معلومات المنتج والخيارات والمراجعات."
+    },
+    "category": {
+      "title": "منتجات {category}",
+      "description": "تسوق منتجات {category} على GLOWshop."
+    },
+    "cart": {
+      "title": "سلة التسوق",
+      "description": "راجع المنتجات في سلتك وأكمل الطلب."
+    },
+    "wishlist": {
+      "title": "المفضلة",
+      "description": "قائمة المنتجات المحفوظة."
+    },
+    "mypage": {
+      "title": "حسابي",
+      "description": "إدارة الطلبات وعناوين الشحن والحساب."
+    },
+    "login": {
+      "title": "تسجيل الدخول",
+      "description": "سجّل الدخول إلى حساب GLOWshop."
+    },
+    "signup": {
+      "title": "إنشاء حساب",
+      "description": "أنشئ حساب GLOWshop وابدأ التسوق."
+    },
+    "admin": {
+      "title": "الإدارة",
+      "description": "لوحة إدارة GLOWshop"
+    },
+    "adminPartners": {
+      "title": "إدارة الشركاء",
+      "description": "تسجيل وإدارة شركاء المنصة."
+    },
+    "adminProducts": {
+      "title": "إدارة المنتجات",
+      "description": "إنشاء المنتجات وتعديلها ونشرها."
+    }
   }
 }

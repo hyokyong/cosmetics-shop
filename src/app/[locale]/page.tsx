@@ -3,7 +3,17 @@ import { Link } from "@/i18n/navigation";
 import ProductCarouselLazy from "@components/product/ProductCarouselLazy";
 import { CATEGORY_VALUES } from "@constants/index";
 import { Button } from "@components/ui/button";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { ArrowRight, Sparkles, Shield, Truck } from "lucide-react";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, page: "home", path: "" });
+}
 
 const CATEGORY_EMOJI: Record<string, string> = {
   skincare: "🧴",

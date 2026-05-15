@@ -143,5 +143,57 @@
     "inactive": "Inactive",
     "activate": "Activate",
     "deactivate": "Deactivate"
+  },
+  "seo": {
+    "siteName": "GLOWshop",
+    "defaultDescription": "Curated cosmetics in one place. Find skincare and makeup that fits your skin.",
+    "home": {
+      "title": "GLOWshop — Radiance for your skin",
+      "description": "Skincare, makeup, suncare and more. Discover products tailored to you at GLOWshop."
+    },
+    "products": {
+      "title": "All products",
+      "description": "Browse the full GLOWshop catalog by category."
+    },
+    "productDetail": {
+      "title": "Product details",
+      "description": "View product info, options, and reviews. Add items to your cart."
+    },
+    "category": {
+      "title": "{category} products",
+      "description": "Shop {category} cosmetics at GLOWshop."
+    },
+    "cart": {
+      "title": "Cart",
+      "description": "Review items in your cart and proceed to checkout."
+    },
+    "wishlist": {
+      "title": "Wishlist",
+      "description": "Your saved favorite products."
+    },
+    "mypage": {
+      "title": "My page",
+      "description": "Manage orders, shipping addresses, and account settings."
+    },
+    "login": {
+      "title": "Log in",
+      "description": "Sign in to your GLOWshop account."
+    },
+    "signup": {
+      "title": "Sign up",
+      "description": "Create a GLOWshop account and start shopping."
+    },
+    "admin": {
+      "title": "Admin",
+      "description": "GLOWshop admin dashboard"
+    },
+    "adminPartners": {
+      "title": "Partner management",
+      "description": "Register and manage marketplace partners."
+    },
+    "adminProducts": {
+      "title": "Product management",
+      "description": "Create, edit, and publish products."
+    }
   }
 }
