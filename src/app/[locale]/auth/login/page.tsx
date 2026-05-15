@@ -3,8 +3,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
 import { Button } from "@components/ui/button";
 import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
@@ -18,6 +18,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export default function LoginPage() {
+  const t = useTranslations("auth");
+  const tGnb = useTranslations("gnb");
   const router = useRouter();
   const { mutate: login, isPending } = useLogin();
 
@@ -30,13 +32,13 @@ export default function LoginPage() {
   const onSubmit = (data: FormData) => {
     login(data, {
       onSuccess: () => {
-        toast({ title: "로그인 되었습니다!" });
+        toast({ title: t("loginSuccess") });
         router.push("/");
       },
       onError: () => {
         toast({
-          title: "로그인 실패",
-          description: "이메일 또는 비밀번호를 확인해주세요",
+          title: t("loginFail"),
+          description: t("loginFailDesc"),
           variant: "destructive",
         });
       },
@@ -46,24 +48,18 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12">
       <div className="w-full max-w-sm">
-        {/* 헤더 */}
         <div className="mb-8 text-center">
           <Link href="/">
             <span className="text-2xl font-bold text-rose-600">GLOW</span>
             <span className="text-2xl font-light text-gray-700">shop</span>
           </Link>
-          <h1 className="mt-4 text-xl font-bold text-gray-900">로그인</h1>
-          <p className="mt-1 text-sm text-gray-500">계정에 로그인하세요</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">{t("loginTitle")}</h1>
+          <p className="mt-1 text-sm text-gray-500">{t("loginSubtitle")}</p>
         </div>
 
-        {/* 폼 */}
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="space-y-4"
-          noValidate
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
           <div className="space-y-1.5">
-            <Label htmlFor="email">이메일</Label>
+            <Label htmlFor="email">{t("email")}</Label>
             <Input
               id="email"
               type="email"
@@ -78,7 +74,7 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="password">비밀번호</Label>
+            <Label htmlFor="password">{t("password")}</Label>
             <Input
               id="password"
               type="password"
@@ -94,20 +90,17 @@ export default function LoginPage() {
 
           <Button
             type="submit"
-            className="w-full bg-rose-600 hover:bg-rose-700"
+            className="w-full whitespace-normal bg-rose-600 hover:bg-rose-700"
             disabled={isPending}
           >
-            {isPending ? "로그인 중..." : "로그인"}
+            {isPending ? t("loginPending") : t("loginSubmit")}
           </Button>
         </form>
 
         <p className="mt-6 text-center text-sm text-gray-500">
-          계정이 없으신가요?{" "}
-          <Link
-            href="/auth/signup"
-            className="font-medium text-rose-600 hover:underline"
-          >
-            회원가입
+          {t("noAccount")}{" "}
+          <Link href="/auth/signup" className="font-medium text-rose-600 hover:underline">
+            {tGnb("signup")}
           </Link>
         </p>
       </div>

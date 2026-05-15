@@ -1,15 +1,21 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import ProductCard from "@components/product/ProductCard";
-import { CATEGORIES, API_QUERY_ENABLED } from "@constants/index";
+import { API_QUERY_ENABLED, CATEGORY_VALUES, type CategoryValue } from "@constants/index";
 import { useGetProducts } from "@/react-query/queries/useProducts";
 
 export default function CategoryPage() {
   const params = useParams();
   const category = params.category as string;
+  const t = useTranslations("products");
+  const tCat = useTranslations("categories");
+  const tCommon = useTranslations("common");
 
-  const categoryLabel = CATEGORIES.find((c) => c.value === category)?.label ?? category;
+  const categoryLabel = (CATEGORY_VALUES as readonly string[]).includes(category)
+    ? tCat(category as CategoryValue)
+    : category;
 
   const { data, isFetching, isError, error } = useGetProducts(
     { page: 0, size: 50, category },
@@ -24,22 +30,21 @@ export default function CategoryPage() {
 
       {!API_QUERY_ENABLED.PRODUCTS && (
         <p className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          상품 목록은 <code className="rounded bg-white px-1 text-xs">API_QUERY_ENABLED.PRODUCTS</code>를
-          true로 설정한 뒤 불러옵니다.
+          {t("apiDisabled")}
         </p>
       )}
 
       {isError && (
         <p className="mb-4 text-sm text-red-600" role="alert">
-          상품 목록을 불러오지 못했습니다.
+          {tCommon("errorLoad")}
           {"message" in (error as Error) ? ` (${(error as Error).message})` : ""}
         </p>
       )}
 
       {!API_QUERY_ENABLED.PRODUCTS ? null : isFetching ? (
-        <div className="py-20 text-center text-gray-500">불러오는 중…</div>
+        <div className="py-20 text-center text-gray-500">{tCommon("loading")}</div>
       ) : products.length === 0 ? (
-        <div className="py-20 text-center text-gray-400">표시할 상품이 없습니다.</div>
+        <div className="py-20 text-center text-gray-400">{t("noCategoryProducts")}</div>
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {products.map((product) => (

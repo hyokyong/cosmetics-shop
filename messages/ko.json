@@ -1,0 +1,147 @@
+{
+  "common": {
+    "loading": "불러오는 중…",
+    "empty": "표시할 항목이 없습니다.",
+    "errorLoad": "데이터를 불러오지 못했습니다.",
+    "brandName": "GLOWshop",
+    "copyright": "© 2024 GLOWshop. All rights reserved."
+  },
+  "language": {
+    "label": "언어",
+    "ko": "한국어",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "gnb": {
+    "mainNav": "메인 네비게이션",
+    "category": "카테고리",
+    "wishlist": "즐겨찾기",
+    "cart": "장바구니",
+    "mypage": "마이페이지",
+    "admin": "어드민",
+    "logout": "로그아웃",
+    "login": "로그인",
+    "signup": "회원가입",
+    "openMenu": "메뉴 열기",
+    "categorySection": "카테고리"
+  },
+  "categories": {
+    "all": "전체",
+    "skincare": "스킨케어",
+    "makeup": "메이크업",
+    "cleansing": "클렌징",
+    "suncare": "선케어",
+    "mask": "마스크",
+    "bodycare": "바디케어"
+  },
+  "footer": {
+    "tagline": "당신의 피부를 위한 최고의 화장품을 만나보세요.",
+    "shopping": "쇼핑",
+    "allProducts": "전체 상품",
+    "customer": "고객센터",
+    "account": "계정"
+  },
+  "home": {
+    "heroBadge": "New Collection 2024",
+    "heroTitle": "당신의 피부에",
+    "heroTitleHighlight": "빛을 더하다",
+    "heroDesc": "엄선된 국내외 브랜드의 화장품을 한 곳에서. 피부 타입에 맞는 제품을 찾아보세요.",
+    "viewAllProducts": "전체 상품 보기",
+    "viewSkincare": "스킨케어 보기",
+    "categoriesTitle": "카테고리",
+    "popularTitle": "이번 주 인기 상품",
+    "viewAll": "전체보기",
+    "benefitsTitle": "혜택",
+    "benefitShippingTitle": "무료 배송",
+    "benefitShippingDesc": "3만원 이상 구매 시 무료 배송",
+    "benefitAuthenticTitle": "정품 보장",
+    "benefitAuthenticDesc": "모든 상품 100% 정품 보장",
+    "benefitPointsTitle": "적립 혜택",
+    "benefitPointsDesc": "구매 금액의 1% 포인트 적립"
+  },
+  "products": {
+    "title": "전체 상품",
+    "categoryFilter": "카테고리 필터",
+    "apiDisabled": "상품 목록은 API_QUERY_ENABLED.PRODUCTS를 true로 바꾼 뒤 GET /products 로 불러옵니다.",
+    "noProducts": "표시할 상품이 없습니다.",
+    "noCategoryProducts": "해당 카테고리에 상품이 없습니다.",
+    "backToList": "상품 목록",
+    "detailDisabled": "상품 상세는 백엔드 연동 후 표시됩니다. API_QUERY_ENABLED.PRODUCT_DETAIL을 true로 설정하세요.",
+    "invalidProduct": "잘못된 상품입니다.",
+    "noOptions": "이 상품에 선택 가능한 옵션이 없습니다.",
+    "reviews": "{count}개 리뷰",
+    "selectOption": "옵션 선택",
+    "quantity": "수량",
+    "total": "총 금액",
+    "addToCart": "장바구니 담기",
+    "wishlist": "즐겨찾기",
+    "description": "상품 설명",
+    "desc1": "피부 깊은 곳까지 수분을 공급하는 광채 크림입니다.",
+    "desc2": "제주 녹차 성분이 풍부하게 함유되어 있어 피부를 진정시키고 영양을 공급합니다.",
+    "desc3": "모든 피부 타입에 사용 가능하며, 자극 없는 순한 성분으로 만들어졌습니다.",
+    "addedToCart": "장바구니에 담았어요!"
+  },
+  "carousel": {
+    "label": "추천 상품",
+    "apiDisabled": "캐러셀은 API_QUERY_ENABLED.PRODUCTS를 true로 설정한 뒤 표시됩니다."
+  },
+  "wishlist": {
+    "title": "즐겨찾기",
+    "emptyTitle": "즐겨찾기가 비어 있어요",
+    "emptyDesc": "마음에 드는 상품을 즐겨찾기에 추가해보세요!",
+    "browse": "상품 둘러보기",
+    "apiHint": "즐겨찾기 상품 정보는 API_QUERY_ENABLED.PRODUCTS를 true로 설정한 뒤 불러옵니다."
+  },
+  "cart": {
+    "title": "장바구니",
+    "empty": "장바구니가 비어 있습니다",
+    "checkout": "주문하기",
+    "remove": "삭제"
+  },
+  "auth": {
+    "loginTitle": "로그인",
+    "loginSubtitle": "계정에 로그인하세요",
+    "signupTitle": "회원가입",
+    "email": "이메일",
+    "password": "비밀번호",
+    "loginSubmit": "로그인",
+    "loginPending": "로그인 중...",
+    "loginSuccess": "로그인 되었습니다!",
+    "loginFail": "로그인 실패",
+    "loginFailDesc": "이메일 또는 비밀번호를 확인해주세요",
+    "noAccount": "계정이 없으신가요?",
+    "hasAccount": "이미 계정이 있으신가요?",
+    "logoutSuccess": "로그아웃 되었습니다"
+  },
+  "mypage": {
+    "title": "마이페이지",
+    "account": "계정 정보",
+    "guest": "게스트",
+    "orders": "주문 내역",
+    "ordersApiDisabled": "주문 API는 API_QUERY_ENABLED.ORDERS를 true로 설정한 뒤 표시됩니다.",
+    "noOrders": "주문 내역이 없습니다.",
+    "orderCancel": "주문 취소",
+    "orderExtra": "외 {count}건",
+    "shipping": "배송지 관리",
+    "shippingApiDisabled": "배송지 API는 API_QUERY_ENABLED.SHIPPING_ADDRESSES를 true로 설정한 뒤 표시됩니다.",
+    "noShipping": "등록된 배송지가 없습니다",
+    "addShipping": "+ 배송지 추가"
+  },
+  "admin": {
+    "title": "관리자",
+    "partners": "파트너 관리",
+    "products": "상품 관리",
+    "addPartner": "+ 파트너 등록",
+    "cancel": "취소",
+    "registerPartner": "파트너 등록",
+    "register": "등록하기",
+    "registering": "등록 중…",
+    "addProduct": "+ 상품 등록",
+    "edit": "수정",
+    "delete": "삭제",
+    "active": "활성",
+    "inactive": "비활성",
+    "activate": "활성화",
+    "deactivate": "비활성화"
+  }
+}

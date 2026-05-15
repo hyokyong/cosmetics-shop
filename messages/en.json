@@ -1,0 +1,147 @@
+{
+  "common": {
+    "loading": "Loading…",
+    "empty": "Nothing to display.",
+    "errorLoad": "Failed to load data.",
+    "brandName": "GLOWshop",
+    "copyright": "© 2024 GLOWshop. All rights reserved."
+  },
+  "language": {
+    "label": "Language",
+    "ko": "한국어",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "gnb": {
+    "mainNav": "Main navigation",
+    "category": "Categories",
+    "wishlist": "Wishlist",
+    "cart": "Cart",
+    "mypage": "My page",
+    "admin": "Admin",
+    "logout": "Log out",
+    "login": "Log in",
+    "signup": "Sign up",
+    "openMenu": "Open menu",
+    "categorySection": "Categories"
+  },
+  "categories": {
+    "all": "All",
+    "skincare": "Skincare",
+    "makeup": "Makeup",
+    "cleansing": "Cleansing",
+    "suncare": "Suncare",
+    "mask": "Mask",
+    "bodycare": "Body care"
+  },
+  "footer": {
+    "tagline": "Discover the best cosmetics for your skin.",
+    "shopping": "Shop",
+    "allProducts": "All products",
+    "customer": "Support",
+    "account": "Account"
+  },
+  "home": {
+    "heroBadge": "New Collection 2024",
+    "heroTitle": "Bring radiance",
+    "heroTitleHighlight": "to your skin",
+    "heroDesc": "Curated domestic and international brands in one place. Find products that fit your skin type.",
+    "viewAllProducts": "View all products",
+    "viewSkincare": "Browse skincare",
+    "categoriesTitle": "Categories",
+    "popularTitle": "Popular this week",
+    "viewAll": "View all",
+    "benefitsTitle": "Benefits",
+    "benefitShippingTitle": "Free shipping",
+    "benefitShippingDesc": "Free shipping on orders over ₩30,000",
+    "benefitAuthenticTitle": "Authentic guarantee",
+    "benefitAuthenticDesc": "100% authentic products",
+    "benefitPointsTitle": "Rewards",
+    "benefitPointsDesc": "Earn 1% points on every purchase"
+  },
+  "products": {
+    "title": "All products",
+    "categoryFilter": "Category filter",
+    "apiDisabled": "Enable API_QUERY_ENABLED.PRODUCTS to load products via GET /products.",
+    "noProducts": "No products to display.",
+    "noCategoryProducts": "No products in this category.",
+    "backToList": "Product list",
+    "detailDisabled": "Product details appear after backend setup. Set API_QUERY_ENABLED.PRODUCT_DETAIL to true.",
+    "invalidProduct": "Invalid product.",
+    "noOptions": "No options available for this product.",
+    "reviews": "{count} reviews",
+    "selectOption": "Select option",
+    "quantity": "Quantity",
+    "total": "Total",
+    "addToCart": "Add to cart",
+    "wishlist": "Wishlist",
+    "description": "Description",
+    "desc1": "A glow cream that delivers deep hydration.",
+    "desc2": "Rich in Jeju green tea to soothe and nourish your skin.",
+    "desc3": "Suitable for all skin types with gentle ingredients.",
+    "addedToCart": "Added to cart!"
+  },
+  "carousel": {
+    "label": "Featured products",
+    "apiDisabled": "Enable API_QUERY_ENABLED.PRODUCTS to show the carousel."
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "emptyTitle": "Your wishlist is empty",
+    "emptyDesc": "Save products you love to your wishlist.",
+    "browse": "Browse products",
+    "apiHint": "Enable API_QUERY_ENABLED.PRODUCTS to load wishlist product details."
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "checkout": "Checkout",
+    "remove": "Remove"
+  },
+  "auth": {
+    "loginTitle": "Log in",
+    "loginSubtitle": "Sign in to your account",
+    "signupTitle": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "loginSubmit": "Log in",
+    "loginPending": "Signing in…",
+    "loginSuccess": "Welcome back!",
+    "loginFail": "Sign-in failed",
+    "loginFailDesc": "Please check your email or password",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "logoutSuccess": "You have been logged out"
+  },
+  "mypage": {
+    "title": "My page",
+    "account": "Account",
+    "guest": "Guest",
+    "orders": "Orders",
+    "ordersApiDisabled": "Enable API_QUERY_ENABLED.ORDERS to load order history.",
+    "noOrders": "No orders yet.",
+    "orderCancel": "Cancel order",
+    "orderExtra": "+ {count} more",
+    "shipping": "Shipping addresses",
+    "shippingApiDisabled": "Enable API_QUERY_ENABLED.SHIPPING_ADDRESSES to manage addresses.",
+    "noShipping": "No saved addresses",
+    "addShipping": "+ Add address"
+  },
+  "admin": {
+    "title": "Admin",
+    "partners": "Partner management",
+    "products": "Product management",
+    "addPartner": "+ Add partner",
+    "cancel": "Cancel",
+    "registerPartner": "Register partner",
+    "register": "Register",
+    "registering": "Registering…",
+    "addProduct": "+ Add product",
+    "edit": "Edit",
+    "delete": "Delete",
+    "active": "Active",
+    "inactive": "Inactive",
+    "activate": "Activate",
+    "deactivate": "Deactivate"
+  }
+}

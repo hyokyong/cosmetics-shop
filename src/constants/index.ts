@@ -1,12 +1,18 @@
-export const CATEGORIES = [
-  { label: '전체', value: 'all' },
-  { label: '스킨케어', value: 'skincare' },
-  { label: '메이크업', value: 'makeup' },
-  { label: '클렌징', value: 'cleansing' },
-  { label: '선케어', value: 'suncare' },
-  { label: '마스크', value: 'mask' },
-  { label: '바디케어', value: 'bodycare' },
-];
+/** 카테고리 slug — 라벨은 `categories.{value}` 번역 키 사용 */
+export const CATEGORY_VALUES = [
+  'all',
+  'skincare',
+  'makeup',
+  'cleansing',
+  'suncare',
+  'mask',
+  'bodycare',
+] as const;
+
+export type CategoryValue = (typeof CATEGORY_VALUES)[number];
+
+/** @deprecated 라벨은 useTranslations('categories') 사용 */
+export const CATEGORIES = CATEGORY_VALUES.map((value) => ({ label: value, value }));
 
 export const ORDER_STATUS_MAP: Record<string, string> = {
   '주문완료': '주문완료',

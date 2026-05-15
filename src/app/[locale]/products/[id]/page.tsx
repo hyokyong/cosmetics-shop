@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { Heart, ShoppingCart, Star, ChevronLeft } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useCartStore } from "@store/cartStore";
 import { useWishlistStore } from "@store/wishlistStore";
 import { formatPrice } from "@utils/format";

@@ -1,0 +1,147 @@
+{
+  "common": {
+    "loading": "جاري التحميل…",
+    "empty": "لا يوجد عناصر للعرض.",
+    "errorLoad": "تعذر تحميل البيانات.",
+    "brandName": "GLOWshop",
+    "copyright": "© 2024 GLOWshop. جميع الحقوق محفوظة."
+  },
+  "language": {
+    "label": "اللغة",
+    "ko": "한국어",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "gnb": {
+    "mainNav": "التنقل الرئيسي",
+    "category": "الفئات",
+    "wishlist": "المفضلة",
+    "cart": "سلة التسوق",
+    "mypage": "حسابي",
+    "admin": "الإدارة",
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "openMenu": "فتح القائمة",
+    "categorySection": "الفئات"
+  },
+  "categories": {
+    "all": "الكل",
+    "skincare": "العناية بالبشرة",
+    "makeup": "المكياج",
+    "cleansing": "التنظيف",
+    "suncare": "الحماية من الشمس",
+    "mask": "الأقنعة",
+    "bodycare": "العناية بالجسم"
+  },
+  "footer": {
+    "tagline": "اكتشف أفضل مستحضرات التجميل لبشرتك.",
+    "shopping": "التسوق",
+    "allProducts": "جميع المنتجات",
+    "customer": "خدمة العملاء",
+    "account": "الحساب"
+  },
+  "home": {
+    "heroBadge": "مجموعة جديدة 2024",
+    "heroTitle": "أضف إشراقة",
+    "heroTitleHighlight": "لبشرتك",
+    "heroDesc": "علامات محلية وعالمية مختارة في مكان واحد. اعثر على منتجات تناسب نوع بشرتك.",
+    "viewAllProducts": "عرض جميع المنتجات",
+    "viewSkincare": "تصفح العناية بالبشرة",
+    "categoriesTitle": "الفئات",
+    "popularTitle": "الأكثر شعبية هذا الأسبوع",
+    "viewAll": "عرض الكل",
+    "benefitsTitle": "المزايا",
+    "benefitShippingTitle": "شحن مجاني",
+    "benefitShippingDesc": "شحن مجاني للطلبات فوق 30,000 وون",
+    "benefitAuthenticTitle": "ضمان الأصالة",
+    "benefitAuthenticDesc": "منتجات أصلية 100%",
+    "benefitPointsTitle": "نقاط المكافآت",
+    "benefitPointsDesc": "اكسب 1% نقاط على كل عملية شراء"
+  },
+  "products": {
+    "title": "جميع المنتجات",
+    "categoryFilter": "تصفية الفئة",
+    "apiDisabled": "فعّل API_QUERY_ENABLED.PRODUCTS لتحميل المنتجات عبر GET /products.",
+    "noProducts": "لا توجد منتجات للعرض.",
+    "noCategoryProducts": "لا توجد منتجات في هذه الفئة.",
+    "backToList": "قائمة المنتجات",
+    "detailDisabled": "تفاصيل المنتج تظهر بعد إعداد الخادم. عيّن API_QUERY_ENABLED.PRODUCT_DETAIL إلى true.",
+    "invalidProduct": "منتج غير صالح.",
+    "noOptions": "لا توجد خيارات متاحة لهذا المنتج.",
+    "reviews": "{count} مراجعات",
+    "selectOption": "اختر الخيار",
+    "quantity": "الكمية",
+    "total": "الإجمالي",
+    "addToCart": "أضف إلى السلة",
+    "wishlist": "المفضلة",
+    "description": "الوصف",
+    "desc1": "كريم مضيء يوفر ترطيباً عميقاً للبشرة.",
+    "desc2": "غني بشاي الجزر الأخضر من جيجو لتهدئة البشرة وتغذيتها.",
+    "desc3": "مناسب لجميع أنواع البشرة بمكونات لطيفة.",
+    "addedToCart": "تمت الإضافة إلى السلة!"
+  },
+  "carousel": {
+    "label": "منتجات مميزة",
+    "apiDisabled": "فعّل API_QUERY_ENABLED.PRODUCTS لعرض الشريط."
+  },
+  "wishlist": {
+    "title": "المفضلة",
+    "emptyTitle": "قائمة المفضلة فارغة",
+    "emptyDesc": "أضف المنتجات التي تعجبك إلى المفضلة.",
+    "browse": "تصفح المنتجات",
+    "apiHint": "فعّل API_QUERY_ENABLED.PRODUCTS لتحميل تفاصيل المنتجات."
+  },
+  "cart": {
+    "title": "سلة التسوق",
+    "empty": "سلة التسوق فارغة",
+    "checkout": "إتمام الطلب",
+    "remove": "حذف"
+  },
+  "auth": {
+    "loginTitle": "تسجيل الدخول",
+    "loginSubtitle": "سجّل الدخول إلى حسابك",
+    "signupTitle": "إنشاء حساب",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "loginSubmit": "تسجيل الدخول",
+    "loginPending": "جاري تسجيل الدخول…",
+    "loginSuccess": "تم تسجيل الدخول!",
+    "loginFail": "فشل تسجيل الدخول",
+    "loginFailDesc": "يرجى التحقق من البريد الإلكتروني أو كلمة المرور",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "logoutSuccess": "تم تسجيل الخروج"
+  },
+  "mypage": {
+    "title": "حسابي",
+    "account": "معلومات الحساب",
+    "guest": "زائر",
+    "orders": "سجل الطلبات",
+    "ordersApiDisabled": "فعّل API_QUERY_ENABLED.ORDERS لعرض الطلبات.",
+    "noOrders": "لا توجد طلبات.",
+    "orderCancel": "إلغاء الطلب",
+    "orderExtra": "+ {count} أخرى",
+    "shipping": "عناوين الشحن",
+    "shippingApiDisabled": "فعّل API_QUERY_ENABLED.SHIPPING_ADDRESSES لإدارة العناوين.",
+    "noShipping": "لا توجد عناوين محفوظة",
+    "addShipping": "+ إضافة عنوان"
+  },
+  "admin": {
+    "title": "الإدارة",
+    "partners": "إدارة الشركاء",
+    "products": "إدارة المنتجات",
+    "addPartner": "+ إضافة شريك",
+    "cancel": "إلغاء",
+    "registerPartner": "تسجيل شريك",
+    "register": "تسجيل",
+    "registering": "جاري التسجيل…",
+    "addProduct": "+ إضافة منتج",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "activate": "تفعيل",
+    "deactivate": "إلغاء التفعيل"
+  }
+}

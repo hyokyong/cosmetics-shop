@@ -8,7 +8,7 @@ import { Button } from "@components/ui/button";
 import { Badge } from "@components/ui/badge";
 import { Separator } from "@components/ui/separator";
 import { User, Package, MapPin, LogOut } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { toast } from "@hooks/useToast";
 import { cn } from "@utils/cn";
 import { API_QUERY_ENABLED } from "@constants/index";
