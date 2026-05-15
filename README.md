@@ -35,6 +35,16 @@ src/
 
 피그마 등 **별도의 디자인 시안 없이** 화면을 구성했고, 레이아웃·컴포넌트·문구 등 UI 작업에는 **AI 도구(cursor, claude)를 활용**했습니다. 따라서 브랜드 가이드나 완성된 디자인 시스템에 맞춘 결과물은 아니며, 기능·흐름 위주의 구현에 가깝습니다.
 
+## 디자인 토큰 (색상)
+
+색상 **값**은 `src/app/globals.css`의 `:root` 변수, **클래스**는 `tailwind.config.ts`에서 연결합니다. 색상 토큰값을 사용하여 개발하며 하드코딩을 지양합니다.
+
+| 토큰                            | 용도               |
+| ------------------------------- | ------------------ |
+| `primary-*`                     | 브랜드 (기존 rose) |
+| `gray-*`                        | 텍스트·배경·보더   |
+| `success` / `warning` / `error` | 상태·에러          |
+
 ## 백엔드 연동 시 참고
 
 - 인증이 필요한 요청은 `axiosWithAuth` 인스턴스를 사용합니다. 토큰·리프레시 처리는 `src/api/axiosInstance/interceptors`에서 담당합니다.
@@ -116,15 +126,3 @@ src/
 | 코드      | `useTranslations('gnb')` / `getTranslations('home')`, 링크는 `@/i18n/navigation`의 `Link`, `useRouter` |
 
 새 문구 추가 시 세 JSON 파일에 **동일한 키**로 넣고, 컴포넌트에서 `t('키')`로 참조하면 됩니다.
-
-```
-messages/
-  ko.json
-  en.json
-  ar.json
-src/i18n/
-  routing.ts      # locales, defaultLocale
-  request.ts      # 메시지 로드
-  navigation.ts   # locale-aware Link / router
-src/middleware.ts # / → /ko 리다이렉트 등
-```

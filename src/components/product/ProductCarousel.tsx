@@ -33,7 +33,7 @@ export default function ProductCarousel() {
   if (!API_QUERY_ENABLED.PRODUCTS) {
     return (
       <section aria-label={t("label")}>
-        <div className="py-8 text-center text-sm text-amber-900">{t("apiDisabled")}</div>
+        <div className="py-8 text-center text-sm text-warning">{t("apiDisabled")}</div>
       </section>
     );
   }

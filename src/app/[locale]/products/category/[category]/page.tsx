@@ -29,13 +29,13 @@ export default function CategoryPage() {
       <h1 className="mb-8 text-2xl font-bold text-gray-900">{categoryLabel}</h1>
 
       {!API_QUERY_ENABLED.PRODUCTS && (
-        <p className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+        <p className="mb-4 rounded-lg border border-warning-border bg-warning-light px-4 py-3 text-sm text-warning">
           {t("apiDisabled")}
         </p>
       )}
 
       {isError && (
-        <p className="mb-4 text-sm text-red-600" role="alert">
+        <p className="mb-4 text-sm text-error" role="alert">
           {tCommon("errorLoad")}
           {"message" in (error as Error) ? ` (${(error as Error).message})` : ""}
         </p>

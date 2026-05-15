@@ -78,7 +78,7 @@ export default function SignupPage() {
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
           <Link href="/">
-            <span className="text-2xl font-bold text-rose-600">GLOW</span>
+            <span className="text-2xl font-bold text-primary-600">GLOW</span>
             <span className="text-2xl font-light text-gray-700">shop</span>
           </Link>
           <h1 className="mt-4 text-xl font-bold text-gray-900">회원가입</h1>
@@ -101,7 +101,7 @@ export default function SignupPage() {
                 autoComplete="email"
                 {...register("email")}
                 onChange={() => setEmailStatus("idle")}
-                className={errors.email ? "border-red-400" : ""}
+                className={errors.email ? "border-error" : ""}
               />
               <Button
                 type="button"
@@ -115,15 +115,15 @@ export default function SignupPage() {
               </Button>
             </div>
             {errors.email && (
-              <p className="text-xs text-red-500">{errors.email.message}</p>
+              <p className="text-xs text-error">{errors.email.message}</p>
             )}
             {emailStatus === "ok" && (
-              <p className="flex items-center gap-1 text-xs text-green-600">
+              <p className="flex items-center gap-1 text-xs text-success">
                 <CheckCircle2 className="h-3 w-3" /> 사용 가능한 이메일입니다
               </p>
             )}
             {emailStatus === "duplicate" && (
-              <p className="flex items-center gap-1 text-xs text-red-500">
+              <p className="flex items-center gap-1 text-xs text-error">
                 <XCircle className="h-3 w-3" /> 이미 사용 중인 이메일입니다
               </p>
             )}
@@ -137,10 +137,10 @@ export default function SignupPage() {
               placeholder="8자 이상 입력해주세요"
               autoComplete="new-password"
               {...register("password")}
-              className={errors.password ? "border-red-400" : ""}
+              className={errors.password ? "border-error" : ""}
             />
             {errors.password && (
-              <p className="text-xs text-red-500">{errors.password.message}</p>
+              <p className="text-xs text-error">{errors.password.message}</p>
             )}
           </div>
 
@@ -152,10 +152,10 @@ export default function SignupPage() {
               placeholder="비밀번호를 다시 입력해주세요"
               autoComplete="new-password"
               {...register("passwordConfirm")}
-              className={errors.passwordConfirm ? "border-red-400" : ""}
+              className={errors.passwordConfirm ? "border-error" : ""}
             />
             {errors.passwordConfirm && (
-              <p className="text-xs text-red-500">
+              <p className="text-xs text-error">
                 {errors.passwordConfirm.message}
               </p>
             )}
@@ -163,7 +163,7 @@ export default function SignupPage() {
 
           <Button
             type="submit"
-            className="w-full bg-rose-600 hover:bg-rose-700"
+            className="w-full bg-primary-600 hover:bg-primary-700"
             disabled={isSigningUp || emailStatus === "duplicate"}
           >
             {isSigningUp ? "가입 중..." : "회원가입"}
@@ -174,7 +174,7 @@ export default function SignupPage() {
           이미 계정이 있으신가요?{" "}
           <Link
             href="/auth/login"
-            className="font-medium text-rose-600 hover:underline"
+            className="font-medium text-primary-600 hover:underline"
           >
             로그인
           </Link>

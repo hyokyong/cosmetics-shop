@@ -124,7 +124,7 @@ export default function AdminPartnersPage() {
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-900">파트너 관리</h1>
         <Button
-          className="bg-rose-600 hover:bg-rose-700"
+          className="bg-primary-600 hover:bg-primary-700"
           onClick={() => setShowForm((v) => !v)}
         >
           {showForm ? "취소" : "+ 파트너 등록"}
@@ -144,7 +144,7 @@ export default function AdminPartnersPage() {
               <Label>이메일</Label>
               <Input placeholder="partner@email.com" {...register("email")} />
               {errors.email && (
-                <p className="text-xs text-red-500">{errors.email.message}</p>
+                <p className="text-xs text-error">{errors.email.message}</p>
               )}
             </div>
             <div className="space-y-1.5">
@@ -155,7 +155,7 @@ export default function AdminPartnersPage() {
                 {...register("password")}
               />
               {errors.password && (
-                <p className="text-xs text-red-500">
+                <p className="text-xs text-error">
                   {errors.password.message}
                 </p>
               )}
@@ -164,7 +164,7 @@ export default function AdminPartnersPage() {
               <Label>브랜드명</Label>
               <Input placeholder="브랜드명 입력" {...register("brandName")} />
               {errors.brandName && (
-                <p className="text-xs text-red-500">
+                <p className="text-xs text-error">
                   {errors.brandName.message}
                 </p>
               )}
@@ -176,7 +176,7 @@ export default function AdminPartnersPage() {
                 {...register("businessNumber")}
               />
               {errors.businessNumber && (
-                <p className="text-xs text-red-500">
+                <p className="text-xs text-error">
                   {errors.businessNumber.message}
                 </p>
               )}
@@ -184,7 +184,7 @@ export default function AdminPartnersPage() {
           </div>
           <Button
             type="submit"
-            className="bg-rose-600 hover:bg-rose-700"
+            className="bg-primary-600 hover:bg-primary-700"
             disabled={postPartnerMutation.isPending}
           >
             {postPartnerMutation.isPending ? "등록 중…" : "등록하기"}
@@ -193,7 +193,7 @@ export default function AdminPartnersPage() {
       )}
 
       {isError && (
-        <p className="mb-4 text-sm text-red-600" role="alert">
+        <p className="mb-4 text-sm text-error" role="alert">
           파트너 목록을 불러오지 못했습니다.
           {"message" in (error as Error)
             ? ` (${(error as Error).message})`

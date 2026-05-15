@@ -37,7 +37,7 @@ export default function Gnb() {
         aria-label={t("mainNav")}
       >
         <Link href="/" className="flex shrink-0 items-center gap-2">
-          <span className="text-xl font-bold tracking-tight text-rose-600">GLOW</span>
+          <span className="text-xl font-bold tracking-tight text-primary-600">GLOW</span>
           <span className="text-xl font-light text-gray-700">shop</span>
         </Link>
 
@@ -45,7 +45,7 @@ export default function Gnb() {
           <div className="relative">
             <button
               type="button"
-              className="flex max-w-full items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-rose-600"
+              className="flex max-w-full items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-primary-600"
               onClick={() => setCategoryOpen((v) => !v)}
               aria-haspopup="true"
               aria-expanded={categoryOpen}
@@ -59,7 +59,7 @@ export default function Gnb() {
                   <Link
                     key={value}
                     href={categoryHref(value)}
-                    className="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-rose-50 hover:text-rose-600"
+                    className="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                     onClick={() => setCategoryOpen(false)}
                   >
                     {tCat(value)}
@@ -76,11 +76,11 @@ export default function Gnb() {
           <Link
             href="/wishlist"
             aria-label={t("wishlist")}
-            className="relative shrink-0 p-2 text-gray-600 transition-colors hover:text-rose-600"
+            className="relative shrink-0 p-2 text-gray-600 transition-colors hover:text-primary-600"
           >
             <Heart className="h-5 w-5" />
             {wishlistCount > 0 && (
-              <span className="absolute -end-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-[10px] font-bold text-white">
+              <span className="absolute -end-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary-500 text-[10px] font-bold text-white">
                 {wishlistCount}
               </span>
             )}
@@ -89,11 +89,11 @@ export default function Gnb() {
           <Link
             href="/cart"
             aria-label={t("cart")}
-            className="relative shrink-0 p-2 text-gray-600 transition-colors hover:text-rose-600"
+            className="relative shrink-0 p-2 text-gray-600 transition-colors hover:text-primary-600"
           >
             <ShoppingCart className="h-5 w-5" />
             {cartCount > 0 && (
-              <span className="absolute -end-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-[10px] font-bold text-white">
+              <span className="absolute -end-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary-500 text-[10px] font-bold text-white">
                 {cartCount}
               </span>
             )}
@@ -104,7 +104,7 @@ export default function Gnb() {
               <Link
                 href="/mypage"
                 aria-label={t("mypage")}
-                className="shrink-0 p-2 text-gray-600 transition-colors hover:text-rose-600"
+                className="shrink-0 p-2 text-gray-600 transition-colors hover:text-primary-600"
               >
                 <User className="h-5 w-5" />
               </Link>
@@ -112,7 +112,7 @@ export default function Gnb() {
                 <Link
                   href="/admin"
                   aria-label={t("admin")}
-                  className="shrink-0 p-2 text-gray-600 transition-colors hover:text-rose-600"
+                  className="shrink-0 p-2 text-gray-600 transition-colors hover:text-primary-600"
                 >
                   <Shield className="h-5 w-5" />
                 </Link>
@@ -121,7 +121,7 @@ export default function Gnb() {
                 variant="ghost"
                 size="sm"
                 onClick={handleLogout}
-                className="max-w-[8rem] truncate text-gray-600 hover:text-rose-600 sm:max-w-none"
+                className="max-w-[8rem] truncate text-gray-600 hover:text-primary-600 sm:max-w-none"
               >
                 {t("logout")}
               </Button>
@@ -131,7 +131,7 @@ export default function Gnb() {
               <Button variant="ghost" size="sm" className="whitespace-nowrap" asChild>
                 <Link href="/auth/login">{t("login")}</Link>
               </Button>
-              <Button size="sm" className="whitespace-nowrap bg-rose-600 hover:bg-rose-700" asChild>
+              <Button size="sm" className="whitespace-nowrap bg-primary-600 hover:bg-primary-700" asChild>
                 <Link href="/auth/signup">{t("signup")}</Link>
               </Button>
             </div>
@@ -158,7 +158,7 @@ export default function Gnb() {
               <Link
                 key={value}
                 href={categoryHref(value)}
-                className="text-sm text-gray-700 hover:text-rose-600"
+                className="text-sm text-gray-700 hover:text-primary-600"
                 onClick={() => setMobileOpen(false)}
               >
                 {tCat(value)}
@@ -186,7 +186,7 @@ export default function Gnb() {
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="text-sm font-medium text-rose-600"
+                  className="text-sm font-medium text-primary-600"
                   onClick={() => setMobileOpen(false)}
                 >
                   {t("signup")}

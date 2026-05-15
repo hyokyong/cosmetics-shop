@@ -65,15 +65,15 @@ export default function ProductCard({ product }: ProductCardProps) {
               aria-label="즐겨찾기"
               className={cn(
                 "flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-md transition-colors",
-                wished ? "text-rose-500" : "text-gray-400 hover:text-rose-500"
+                wished ? "text-primary-500" : "text-gray-400 hover:text-primary-500"
               )}
             >
-              <Heart className={cn("h-4 w-4", wished && "fill-rose-500")} />
+              <Heart className={cn("h-4 w-4", wished && "fill-primary-500")} />
             </button>
             <button
               onClick={handleAddToCart}
               aria-label="장바구니 담기"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-500 text-white shadow-md hover:bg-rose-600 transition-colors"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-500 text-white shadow-md hover:bg-primary-600 transition-colors"
             >
               <ShoppingCart className="h-4 w-4" />
             </button>
@@ -82,7 +82,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* 상품 정보 */}
         <div className="p-4">
-          <p className="text-xs text-rose-500 font-medium mb-1">{product.brandName}</p>
+          <p className="text-xs text-primary-500 font-medium mb-1">{product.brandName}</p>
           <h3 className="text-sm font-medium text-gray-900 line-clamp-2 leading-snug">
             {product.name}
           </h3>

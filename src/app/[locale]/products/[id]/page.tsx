@@ -45,7 +45,7 @@ export default function ProductDetailPage() {
       <div className="mx-auto max-w-7xl px-4 py-20 text-center text-gray-600 sm:px-6 lg:px-8">
         잘못된 상품입니다.
         <div className="mt-4">
-          <Link href="/products" className="text-rose-600 hover:underline">상품 목록</Link>
+          <Link href="/products" className="text-primary-600 hover:underline">상품 목록</Link>
         </div>
       </div>
     );
@@ -59,7 +59,7 @@ export default function ProductDetailPage() {
           <code className="rounded bg-gray-100 px-1 text-xs">API_QUERY_ENABLED.PRODUCT_DETAIL</code>을
           true로 설정하세요.
         </p>
-        <Link href="/products" className="mt-4 inline-block text-rose-600 hover:underline">
+        <Link href="/products" className="mt-4 inline-block text-primary-600 hover:underline">
           상품 목록
         </Link>
       </div>
@@ -77,11 +77,11 @@ export default function ProductDetailPage() {
   if (isError || !product) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
-        <p className="text-red-600">
+        <p className="text-error">
           상품을 불러오지 못했습니다.
           {error && "message" in (error as Error) ? ` (${(error as Error).message})` : ""}
         </p>
-        <Link href="/products" className="mt-4 inline-block text-rose-600 hover:underline">
+        <Link href="/products" className="mt-4 inline-block text-primary-600 hover:underline">
           상품 목록으로
         </Link>
       </div>
@@ -92,7 +92,7 @@ export default function ProductDetailPage() {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center text-gray-600 sm:px-6 lg:px-8">
         이 상품에 선택 가능한 옵션이 없습니다.
-        <Link href="/products" className="mt-4 block text-rose-600 hover:underline">
+        <Link href="/products" className="mt-4 block text-primary-600 hover:underline">
           상품 목록
         </Link>
       </div>
@@ -119,7 +119,7 @@ export default function ProductDetailPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <Link href="/products" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-rose-600">
+      <Link href="/products" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600">
         <ChevronLeft className="h-4 w-4" /> 상품 목록
       </Link>
 
@@ -137,7 +137,7 @@ export default function ProductDetailPage() {
 
         <div className="flex flex-col gap-6">
           <div>
-            <p className="text-sm font-semibold text-rose-500">{product.brandName}</p>
+            <p className="text-sm font-semibold text-primary-500">{product.brandName}</p>
             <h1 className="mt-1 text-2xl font-bold text-gray-900">{product.name}</h1>
 
             <div className="mt-2 flex items-center gap-2">
@@ -174,13 +174,13 @@ export default function ProductDetailPage() {
                   className={cn(
                     "rounded-lg border px-4 py-2 text-sm font-medium transition-colors disabled:opacity-40",
                     selectedOption.id === opt.id
-                      ? "border-rose-500 bg-rose-50 text-rose-600"
-                      : "border-gray-200 bg-white text-gray-700 hover:border-rose-300"
+                      ? "border-primary-500 bg-primary-50 text-primary-600"
+                      : "border-gray-200 bg-white text-gray-700 hover:border-primary-300"
                   )}
                 >
                   {opt.color} / {opt.size}
                   {opt.additionalPrice > 0 && (
-                    <span className="ml-1 text-xs text-rose-500">+{formatPrice(opt.additionalPrice)}</span>
+                    <span className="ml-1 text-xs text-primary-500">+{formatPrice(opt.additionalPrice)}</span>
                   )}
                 </button>
               ))}
@@ -193,7 +193,7 @@ export default function ProductDetailPage() {
               <button
                 type="button"
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="flex h-9 w-9 items-center justify-center rounded-lg border text-gray-600 hover:border-rose-300"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border text-gray-600 hover:border-primary-300"
               >
                 -
               </button>
@@ -201,7 +201,7 @@ export default function ProductDetailPage() {
               <button
                 type="button"
                 onClick={() => setQuantity((q) => Math.min(selectedOption.quantity, q + 1))}
-                className="flex h-9 w-9 items-center justify-center rounded-lg border text-gray-600 hover:border-rose-300"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border text-gray-600 hover:border-primary-300"
               >
                 +
               </button>
@@ -210,7 +210,7 @@ export default function ProductDetailPage() {
 
           <div className="flex items-center justify-between rounded-2xl bg-gray-50 px-4 py-3">
             <span className="text-sm text-gray-600">총 금액</span>
-            <span className="text-xl font-bold text-rose-600">{formatPrice(totalPrice)}</span>
+            <span className="text-xl font-bold text-primary-600">{formatPrice(totalPrice)}</span>
           </div>
 
           <div className="flex gap-3">
@@ -218,13 +218,13 @@ export default function ProductDetailPage() {
               variant="outline"
               size="icon"
               onClick={() => toggle(product.id)}
-              className={cn("shrink-0", wished && "border-rose-500 text-rose-500")}
+              className={cn("shrink-0", wished && "border-primary-500 text-primary-500")}
               aria-label="즐겨찾기"
             >
-              <Heart className={cn("h-5 w-5", wished && "fill-rose-500 text-rose-500")} />
+              <Heart className={cn("h-5 w-5", wished && "fill-primary-500 text-primary-500")} />
             </Button>
             <Button
-              className="flex-1 bg-rose-600 hover:bg-rose-700"
+              className="flex-1 bg-primary-600 hover:bg-primary-700"
               onClick={handleAddToCart}
             >
               <ShoppingCart className="mr-2 h-4 w-4" />

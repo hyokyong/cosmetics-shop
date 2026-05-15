@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
-            <span className="text-xl font-bold text-rose-600">GLOW</span>
+            <span className="text-xl font-bold text-primary-600">GLOW</span>
             <span className="text-xl font-light text-gray-700">shop</span>
             <p className="mt-3 text-sm text-gray-500">{t("tagline")}</p>
           </div>
@@ -22,17 +22,17 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-gray-900">{t("shopping")}</h3>
             <ul className="mt-3 space-y-2">
               <li>
-                <Link href="/products" className="text-sm text-gray-500 hover:text-rose-600">
+                <Link href="/products" className="text-sm text-gray-500 hover:text-primary-600">
                   {t("allProducts")}
                 </Link>
               </li>
               <li>
-                <Link href="/products/category/skincare" className="text-sm text-gray-500 hover:text-rose-600">
+                <Link href="/products/category/skincare" className="text-sm text-gray-500 hover:text-primary-600">
                   {tCat("skincare")}
                 </Link>
               </li>
               <li>
-                <Link href="/products/category/makeup" className="text-sm text-gray-500 hover:text-rose-600">
+                <Link href="/products/category/makeup" className="text-sm text-gray-500 hover:text-primary-600">
                   {tCat("makeup")}
                 </Link>
               </li>
@@ -42,12 +42,12 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-gray-900">{t("customer")}</h3>
             <ul className="mt-3 space-y-2">
               <li>
-                <Link href="/mypage" className="text-sm text-gray-500 hover:text-rose-600">
+                <Link href="/mypage" className="text-sm text-gray-500 hover:text-primary-600">
                   {tGnb("mypage")}
                 </Link>
               </li>
               <li>
-                <Link href="/cart" className="text-sm text-gray-500 hover:text-rose-600">
+                <Link href="/cart" className="text-sm text-gray-500 hover:text-primary-600">
                   {tGnb("cart")}
                 </Link>
               </li>
@@ -57,12 +57,12 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-gray-900">{t("account")}</h3>
             <ul className="mt-3 space-y-2">
               <li>
-                <Link href="/auth/login" className="text-sm text-gray-500 hover:text-rose-600">
+                <Link href="/auth/login" className="text-sm text-gray-500 hover:text-primary-600">
                   {tGnb("login")}
                 </Link>
               </li>
               <li>
-                <Link href="/auth/signup" className="text-sm text-gray-500 hover:text-rose-600">
+                <Link href="/auth/signup" className="text-sm text-gray-500 hover:text-primary-600">
                   {tGnb("signup")}
                 </Link>
               </li>

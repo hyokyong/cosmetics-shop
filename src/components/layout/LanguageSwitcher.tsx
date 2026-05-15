@@ -40,8 +40,8 @@ export default function LanguageSwitcher() {
               "min-w-[2.25rem] rounded-md px-2 py-1 text-xs font-medium transition-colors sm:min-w-0 sm:px-2.5",
               "whitespace-nowrap",
               locale === code
-                ? "bg-white text-rose-600 shadow-sm"
-                : "text-gray-600 hover:text-rose-600",
+                ? "bg-white text-primary-600 shadow-sm"
+                : "text-gray-600 hover:text-primary-600",
             )}
             aria-pressed={locale === code}
             aria-label={t(code)}

@@ -17,7 +17,7 @@ export default function CartPage() {
         <ShoppingBag className="mx-auto h-16 w-16 text-gray-300" />
         <h2 className="mt-4 text-xl font-semibold text-gray-700">장바구니가 비어 있어요</h2>
         <p className="mt-2 text-sm text-gray-400">마음에 드는 상품을 담아보세요!</p>
-        <Button className="mt-8 bg-rose-600 hover:bg-rose-700" asChild>
+        <Button className="mt-8 bg-primary-600 hover:bg-primary-700" asChild>
           <Link href="/products">쇼핑 계속하기</Link>
         </Button>
       </div>
@@ -51,7 +51,7 @@ export default function CartPage() {
                   <button
                     onClick={() => removeItem(item.id)}
                     aria-label="삭제"
-                    className="text-gray-300 hover:text-rose-500 transition-colors"
+                    className="text-gray-300 hover:text-primary-500 transition-colors"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
@@ -96,12 +96,12 @@ export default function CartPage() {
               <Separator />
               <div className="flex justify-between font-bold text-gray-900 text-base">
                 <span>총 결제 금액</span>
-                <span className="text-rose-600">
+                <span className="text-primary-600">
                   {formatPrice(totalPrice() + (totalPrice() >= 30000 ? 0 : 3000))}
                 </span>
               </div>
             </div>
-            <Button className="mt-6 w-full bg-rose-600 hover:bg-rose-700" asChild>
+            <Button className="mt-6 w-full bg-primary-600 hover:bg-primary-700" asChild>
               <Link href="/mypage">주문하기</Link>
             </Button>
           </div>

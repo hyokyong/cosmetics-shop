@@ -50,7 +50,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
           <Link href="/">
-            <span className="text-2xl font-bold text-rose-600">GLOW</span>
+            <span className="text-2xl font-bold text-primary-600">GLOW</span>
             <span className="text-2xl font-light text-gray-700">shop</span>
           </Link>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t("loginTitle")}</h1>
@@ -66,10 +66,10 @@ export default function LoginPage() {
               placeholder="example@email.com"
               autoComplete="email"
               {...register("email")}
-              className={errors.email ? "border-red-400" : ""}
+              className={errors.email ? "border-error" : ""}
             />
             {errors.email && (
-              <p className="text-xs text-red-500">{errors.email.message}</p>
+              <p className="text-xs text-error">{errors.email.message}</p>
             )}
           </div>
 
@@ -81,16 +81,16 @@ export default function LoginPage() {
               placeholder="••••••••"
               autoComplete="current-password"
               {...register("password")}
-              className={errors.password ? "border-red-400" : ""}
+              className={errors.password ? "border-error" : ""}
             />
             {errors.password && (
-              <p className="text-xs text-red-500">{errors.password.message}</p>
+              <p className="text-xs text-error">{errors.password.message}</p>
             )}
           </div>
 
           <Button
             type="submit"
-            className="w-full whitespace-normal bg-rose-600 hover:bg-rose-700"
+            className="w-full whitespace-normal bg-primary-600 hover:bg-primary-700"
             disabled={isPending}
           >
             {isPending ? t("loginPending") : t("loginSubmit")}
@@ -99,7 +99,7 @@ export default function LoginPage() {
 
         <p className="mt-6 text-center text-sm text-gray-500">
           {t("noAccount")}{" "}
-          <Link href="/auth/signup" className="font-medium text-rose-600 hover:underline">
+          <Link href="/auth/signup" className="font-medium text-primary-600 hover:underline">
             {tGnb("signup")}
           </Link>
         </p>

@@ -29,14 +29,14 @@ export default function ProductsPage() {
       <h1 className="mb-8 text-2xl font-bold text-gray-900">{t("title")}</h1>
 
       {isError && (
-        <p className="mb-4 text-sm text-red-600" role="alert">
+        <p className="mb-4 text-sm text-error" role="alert">
           {tCommon("errorLoad")}
           {"message" in (error as Error) ? ` (${(error as Error).message})` : ""}
         </p>
       )}
 
       {!API_QUERY_ENABLED.PRODUCTS && (
-        <p className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+        <p className="mb-4 rounded-lg border border-warning-border bg-warning-light px-4 py-3 text-sm text-warning">
           {t("apiDisabled")}
         </p>
       )}
@@ -57,8 +57,8 @@ export default function ProductsPage() {
               "rounded-full border px-3 py-1.5 text-sm font-medium transition-colors sm:px-4",
               "whitespace-nowrap",
               selectedCategory === value
-                ? "border-rose-500 bg-rose-500 text-white"
-                : "border-gray-200 bg-white text-gray-600 hover:border-rose-300 hover:text-rose-600",
+                ? "border-primary-500 bg-primary-500 text-white"
+                : "border-gray-200 bg-white text-gray-600 hover:border-primary-300 hover:text-primary-600",
             )}
           >
             {tCat(value)}

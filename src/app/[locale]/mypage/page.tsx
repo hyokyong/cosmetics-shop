@@ -12,14 +12,7 @@ import { useRouter } from "@/i18n/navigation";
 import { toast } from "@hooks/useToast";
 import { cn } from "@utils/cn";
 import { API_QUERY_ENABLED } from "@constants/index";
-
-const STATUS_COLOR: Record<string, string> = {
-  주문완료: "bg-blue-100 text-blue-700",
-  배송준비중: "bg-yellow-100 text-yellow-700",
-  배송중: "bg-orange-100 text-orange-700",
-  배송완료: "bg-green-100 text-green-700",
-  취소: "bg-gray-100 text-gray-500",
-};
+import { orderStatusClass } from "@/config/design-tokens";
 
 // 목업 주문 (로컬 테스트 시 주석 해제 후 ORDERS 쿼리 `enabled` 끄기)
 // const MOCK_ORDERS = [ ... ];
@@ -63,8 +56,8 @@ export default function MyPage() {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-rose-100">
-                <User className="h-7 w-7 text-rose-600" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary-100">
+                <User className="h-7 w-7 text-primary-600" />
               </div>
               <div>
                 <p className="font-semibold text-gray-900">
@@ -87,12 +80,12 @@ export default function MyPage() {
           aria-label="주문 내역"
         >
           <div className="mb-4 flex items-center gap-2">
-            <Package className="h-5 w-5 text-rose-500" />
+            <Package className="h-5 w-5 text-primary-500" />
             <h2 className="text-lg font-bold text-gray-900">주문 내역</h2>
           </div>
 
           {ordersError && (
-            <p className="mb-3 text-sm text-red-600" role="alert">
+            <p className="mb-3 text-sm text-error" role="alert">
               주문 내역을 불러오지 못했습니다.
               {ordersErr && "message" in (ordersErr as Error)
                 ? ` (${(ordersErr as Error).message})`
@@ -126,7 +119,7 @@ export default function MyPage() {
                     <span
                       className={cn(
                         "rounded-full px-2.5 py-0.5 text-xs font-medium",
-                        STATUS_COLOR[order.status],
+                        orderStatusClass[order.status],
                       )}
                     >
                       {order.status}
@@ -155,7 +148,7 @@ export default function MyPage() {
         >
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-rose-500" />
+              <MapPin className="h-5 w-5 text-primary-500" />
               <h2 className="text-lg font-bold text-gray-900">배송지 관리</h2>
             </div>
             <Button size="sm" variant="outline">
@@ -164,7 +157,7 @@ export default function MyPage() {
           </div>
 
           {shippingError && (
-            <p className="mb-3 text-sm text-red-600" role="alert">
+            <p className="mb-3 text-sm text-error" role="alert">
               배송지를 불러오지 못했습니다.
               {shippingErr && "message" in (shippingErr as Error)
                 ? ` (${(shippingErr as Error).message})`

@@ -72,11 +72,11 @@ export default function AdminProductsPage() {
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-900">상품 관리</h1>
-        <Button className="bg-rose-600 hover:bg-rose-700">+ 상품 등록</Button>
+        <Button className="bg-primary-600 hover:bg-primary-700">+ 상품 등록</Button>
       </div>
 
       {isError && (
-        <p className="mb-4 text-sm text-red-600" role="alert">
+        <p className="mb-4 text-sm text-error" role="alert">
           상품 목록을 불러오지 못했습니다.
           {"message" in (error as Error) ? ` (${(error as Error).message})` : ""}
         </p>
@@ -142,7 +142,7 @@ export default function AdminProductsPage() {
                         onClick={() => removeProduct(product.id)}
                         disabled={deleteProductMutation.isPending}
                         aria-label="삭제"
-                        className="text-gray-300 hover:text-red-500 transition-colors disabled:opacity-40"
+                        className="text-gray-300 hover:text-error transition-colors disabled:opacity-40"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
