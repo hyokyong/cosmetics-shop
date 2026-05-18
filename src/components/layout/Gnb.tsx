@@ -8,7 +8,6 @@ import { useAuthStore } from "@store/authStore";
 import { useCartStore } from "@store/cartStore";
 import { useWishlistStore } from "@store/wishlistStore";
 import { CATEGORY_VALUES } from "@constants/index";
-import { cn } from "@utils/cn";
 import { Button } from "@components/ui/button";
 import LanguageSwitcher from "@components/layout/LanguageSwitcher";
 
@@ -101,7 +100,7 @@ export default function Gnb() {
             )}
           </Link>
 
-          {isAuthenticated ? (
+          {mounted && isAuthenticated ? (
             <div className="hidden min-w-0 flex-wrap items-center gap-1 md:flex">
               <Link
                 href="/mypage"
@@ -167,7 +166,7 @@ export default function Gnb() {
               </Link>
             ))}
             <hr className="my-2" />
-            {isAuthenticated ? (
+            {mounted && isAuthenticated ? (
               <>
                 <Link href="/mypage" className="text-sm text-gray-700" onClick={() => setMobileOpen(false)}>
                   {t("mypage")}
