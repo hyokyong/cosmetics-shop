@@ -5,6 +5,7 @@ interface WishlistState {
   productIds: number[];
   toggle: (productId: number) => void;
   isWished: (productId: number) => boolean;
+  keepOnly: (validIds: number[]) => void;
 }
 
 export const useWishlistStore = create<WishlistState>()(
@@ -20,6 +21,11 @@ export const useWishlistStore = create<WishlistState>()(
         })),
 
       isWished: (productId) => get().productIds.includes(productId),
+
+      keepOnly: (validIds) =>
+        set((state) => ({
+          productIds: state.productIds.filter((id) => validIds.includes(id)),
+        })),
     }),
     { name: 'wishlist-storage' },
   ),
