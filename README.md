@@ -189,3 +189,49 @@ npm run dev
 | 코드      | `useTranslations('gnb')` / `getTranslations('home')`, 링크는 `@/i18n/navigation`의 `Link`, `useRouter` |
 
 새 문구 추가 시 세 JSON 파일에 **동일한 키**로 넣고, 컴포넌트에서 `t('키')`로 참조하면 됩니다.
+
+## SEO
+
+**메타데이터** (`generateMetadata`)
+
+모든 페이지 layout에 `generateMetadata()`를 적용했습니다. `buildPageMetadata()`가 아래를 일괄 생성합니다.
+
+**상품 상세 동적 메타데이터**
+
+`/products/[id]/layout.tsx`에서 DB를 직접 조회해 상품명·브랜드명을 타이틀·설명에 반영합니다.
+
+```
+상품명 — 브랜드명. {seo.productDetail.description}
+```
+
+**카테고리 페이지**
+
+URL slug(`skincare` 등)를 next-intl 번역키로 변환해 언어별 타이틀을 생성합니다.
+
+**noIndex 처리**
+
+개인 정보가 포함된 페이지는 크롤링에서 제외합니다.
+
+| 경로        | robots              |
+| ----------- | ------------------- |
+| `/admin/*`  | `noindex, nofollow` |
+| `/mypage`   | `noindex, nofollow` |
+| `/cart`     | `noindex, nofollow` |
+| `/wishlist` | `noindex, nofollow` |
+
+**sitemap.xml**
+
+- 정적 경로(홈, 상품 목록, 카테고리별, 로그인·회원가입) × 전 locale
+- 상품 상세 페이지(`/products/:id`) — DB에서 공개 상품 ID 조회 후 동적 생성
+- 홈: `priority 1.0`, 상품 관련: `0.7~0.8`, 나머지: `0.5`
+
+**robots.txt**
+
+```
+Allow: /
+Disallow: /*/admin/
+Disallow: /*/mypage
+Disallow: /*/cart
+Disallow: /*/wishlist
+Sitemap: {SITE_URL}/sitemap.xml
+```
