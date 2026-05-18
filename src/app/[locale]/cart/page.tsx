@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Trash2, ShoppingBag } from "lucide-react";
@@ -10,6 +11,7 @@ import { Separator } from "@components/ui/separator";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalPrice } = useCartStore();
+  const price = useMemo(() => totalPrice(), [items]);
 
   if (items.length === 0) {
     return (
@@ -87,17 +89,17 @@ export default function CartPage() {
             <div className="space-y-3 text-sm">
               <div className="flex justify-between text-gray-600">
                 <span>상품 금액</span>
-                <span>{formatPrice(totalPrice())}</span>
+                <span>{formatPrice(price)}</span>
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>배송비</span>
-                <span>{totalPrice() >= 30000 ? "무료" : formatPrice(3000)}</span>
+                <span>{price >= 30000 ? "무료" : formatPrice(3000)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold text-gray-900 text-base">
                 <span>총 결제 금액</span>
                 <span className="text-primary-600">
-                  {formatPrice(totalPrice() + (totalPrice() >= 30000 ? 0 : 3000))}
+                  {formatPrice(price + (price >= 30000 ? 0 : 3000))}
                 </span>
               </div>
             </div>

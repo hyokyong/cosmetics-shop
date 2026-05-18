@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import ProductCard from "@components/product/ProductCard";
 import { CATEGORY_VALUES } from "@constants/index";
@@ -13,10 +13,13 @@ export default function ProductsPage() {
   const tCommon = useTranslations("common");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const listParams =
-    selectedCategory === "all"
-      ? { page: 0, size: 50 }
-      : { page: 0, size: 50, category: selectedCategory };
+  const listParams = useMemo(
+    () =>
+      selectedCategory === "all"
+        ? { page: 0, size: 50 }
+        : { page: 0, size: 50, category: selectedCategory },
+    [selectedCategory]
+  );
 
   const { data, isFetching, isError, error } = useGetProducts(listParams);
 

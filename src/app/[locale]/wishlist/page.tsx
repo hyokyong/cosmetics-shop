@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link } from "@/i18n/navigation";
 import { Heart } from "lucide-react";
 import { useWishlistStore } from "@store/wishlistStore";
@@ -13,8 +13,11 @@ export default function WishlistPage() {
 
   const { data, isFetching } = useGetProducts({ page: 0, size: 200 });
 
-  const allProducts = data?.content ?? [];
-  const wishedProducts = allProducts.filter((p) => productIds.includes(p.id));
+  const allProducts = useMemo(() => data?.content ?? [], [data]);
+  const wishedProducts = useMemo(
+    () => allProducts.filter((p) => productIds.includes(p.id)),
+    [allProducts, productIds]
+  );
 
   useEffect(() => {
     if (!isFetching && data) {

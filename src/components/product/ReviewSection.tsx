@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Star } from "lucide-react";
 import { useAuthStore } from "@store/authStore";
 import { useGetReviews, usePostReview } from "@/react-query/queries/useReviews";
@@ -23,12 +23,15 @@ export default function ReviewSection({ productId }: Props) {
   const [content, setContent] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const averageRating =
-    reviews.length > 0
-      ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-      : 0;
+  const averageRating = useMemo(
+    () =>
+      reviews.length > 0
+        ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
+        : 0,
+    [reviews]
+  );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     if (!content.trim()) return;
     submitReview(
@@ -42,7 +45,7 @@ export default function ReviewSection({ productId }: Props) {
         },
       }
     );
-  };
+  }, [content, rating, productId, submitReview]);
 
   return (
     <section className="mt-16">

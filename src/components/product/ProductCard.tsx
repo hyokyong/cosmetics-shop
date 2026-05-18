@@ -1,5 +1,6 @@
 "use client";
 
+import { memo, useCallback } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Heart, ShoppingCart, Star } from "lucide-react";
@@ -14,12 +15,12 @@ interface ProductCardProps {
   product: Product;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((s) => s.addItem);
   const { toggle, isWished } = useWishlistStore();
   const wished = isWished(product.id);
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleAddToCart = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     const defaultOption = product.options[0];
     if (!defaultOption) return;
@@ -35,15 +36,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       quantity: 1,
     });
     toast({ title: "장바구니에 담았어요!", description: product.name });
-  };
+  }, [product, addItem]);
 
-  const handleWishlist = (e: React.MouseEvent) => {
+  const handleWishlist = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     toggle(product.id);
     toast({
       title: wished ? "즐겨찾기에서 제거했어요" : "즐겨찾기에 추가했어요!",
     });
-  };
+  }, [product.id, wished, toggle]);
 
   return (
     <article className="group relative rounded-2xl bg-white shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
@@ -105,3 +106,5 @@ export default function ProductCard({ product }: ProductCardProps) {
     </article>
   );
 }
+
+export default memo(ProductCard);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { ShoppingCart, Heart, User, Menu, X, Shield, ChevronDown } from "lucide-react";
@@ -28,8 +28,10 @@ export default function Gnb() {
     router.push("/");
   };
 
-  const categoryHref = (value: string) =>
-    value === "all" ? "/products" : `/products/category/${value}`;
+  const categoryHref = useCallback(
+    (value: string) => (value === "all" ? "/products" : `/products/category/${value}`),
+    []
+  );
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
