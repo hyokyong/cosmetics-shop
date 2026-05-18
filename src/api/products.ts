@@ -18,13 +18,13 @@ export const getProducts = async (params?: {
 
 // 브랜드 목록 조회
 export const getBrands = async (): Promise<string[]> => {
-  const { data } = await axiosWithAuth.get("/products/brands");
+  const { data } = await axiosService.get("/products/brands");
   return data;
 };
 
 // 상품 상세 조회
 export const getProduct = async (id: number): Promise<Product> => {
-  const { data } = await axiosWithAuth.get(`/products/${id}`);
+  const { data } = await axiosService.get(`/products/${id}`);
   return data;
 };
 
