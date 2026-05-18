@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { ShoppingCart, Heart, User, Menu, X, Shield, ChevronDown } from "lucide-react";
@@ -21,6 +21,8 @@ export default function Gnb() {
   const wishlistCount = useWishlistStore((s) => s.productIds.length);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [categoryOpen, setCategoryOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const handleLogout = () => {
     logout();
@@ -79,7 +81,7 @@ export default function Gnb() {
             className="relative shrink-0 p-2 text-gray-600 transition-colors hover:text-primary-600"
           >
             <Heart className="h-5 w-5" />
-            {wishlistCount > 0 && (
+            {mounted && wishlistCount > 0 && (
               <span className="absolute -end-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary-500 text-[10px] font-bold text-white">
                 {wishlistCount}
               </span>
@@ -92,7 +94,7 @@ export default function Gnb() {
             className="relative shrink-0 p-2 text-gray-600 transition-colors hover:text-primary-600"
           >
             <ShoppingCart className="h-5 w-5" />
-            {cartCount > 0 && (
+            {mounted && cartCount > 0 && (
               <span className="absolute -end-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary-500 text-[10px] font-bold text-white">
                 {cartCount}
               </span>
