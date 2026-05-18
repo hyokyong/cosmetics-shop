@@ -12,6 +12,7 @@ import { cn } from "@utils/cn";
 import { Button } from "@components/ui/button";
 import { toast } from "@hooks/useToast";
 import { useGetProduct } from "@/react-query/queries/useProducts";
+import ReviewSection from "@components/product/ReviewSection";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -226,6 +227,8 @@ if (isFetching) {
           <p className="mt-2">모든 피부 타입에 사용 가능하며, 자극 없는 순한 성분으로 만들어졌습니다.</p>
         </div>
       </div>
+
+      <ReviewSection productId={id} />
     </div>
   );
 }

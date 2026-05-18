@@ -155,14 +155,13 @@ export interface Review {
   id: number;
   userId: number;
   productId: number;
-  orderId: number;
   content: string;
   rating: number;
   createdAt: string;
+  userName?: string;
 }
 
 export interface ReviewCreateRequest {
-  orderId: number;
   productId: number;
   content: string;
   rating: number;

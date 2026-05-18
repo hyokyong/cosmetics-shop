@@ -1,8 +1,8 @@
-import { axiosWithAuth } from "@/api/axiosInstance";
+import { axiosWithAuth, axiosService } from "@/api/axiosInstance";
 import { Review, ReviewCreateRequest } from "@/types/index";
 
 export const getReviews = async (productId: number): Promise<Review[]> => {
-  const { data } = await axiosWithAuth.get(`/reviews?productId=${productId}`);
+  const { data } = await axiosService.get(`/reviews?productId=${productId}`);
   return data;
 };
 
