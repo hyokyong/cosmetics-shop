@@ -9,7 +9,9 @@ export async function GET() {
       distinct: ["brandName"],
     });
 
-    return NextResponse.json(brands.map((b) => b.brandName));
+    return NextResponse.json(
+      brands.map((b: { brandName: string }) => b.brandName),
+    );
   } catch {
     return NextResponse.json({ message: "서버 에러" }, { status: 500 });
   }
