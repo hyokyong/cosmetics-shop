@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 유저
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+
+  orders          Order[]
+  reviews         Review[]
+  shippingAddresses ShippingAddress[]
+}
+
+enum Role {
+  USER
+  ADMIN
+  PARTNER
+}
+
+// 상품
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  price       Int
+  stock       Int      @default(0)
+  category    String
+  brandName   String
+  imageUrl    String?
+  isDeleted   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  orderItems OrderItem[]
+  reviews    Review[]
+}
+
+// 주문
+model Order {
+  id        Int         @id @default(autoincrement())
+  userId    Int
+  status    OrderStatus @default(PENDING)
+  createdAt DateTime    @default(now())
+
+  user       User        @relation(fields: [userId], references: [id])
+  orderItems OrderItem[]
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+// 주문 상품 (주문 1개에 상품 여러개)
+model OrderItem {
+  id        Int @id @default(autoincrement())
+  orderId   Int
+  productId Int
+  quantity  Int
+  price     Int
+
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+}
+
+// 배송지
+model ShippingAddress {
+  id         Int     @id @default(autoincrement())
+  userId     Int
+  address    String
+  detailAddress String?
+  zipCode    String
+  isDefault  Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+// 리뷰
+model Review {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  productId Int
+  content   String
+  rating    Int
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+}
+
+// 파트너
+model Partner {
+  id       Int     @id @default(autoincrement())
+  name     String
+  isActive Boolean @default(true)
+}
