@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "env-cmd -f .env.development next dev",
+    "build": "prisma generate && next build",
     "build:dev": "env-cmd -f .env.development next build",
     "start:dev": "env-cmd -f .env.development next start",
     "build:prod": "env-cmd -f .env.production next build",
     "start:prod": "env-cmd -f .env.production next start",
+    "postinstall": "prisma generate",
     "lint": "next lint"
   },
   "dependencies": {
