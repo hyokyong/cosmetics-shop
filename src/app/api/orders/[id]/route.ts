@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getAuthUser, unauthorized, forbidden } from "@/lib/auth";
-import { MOCK_ORDERS } from "@/lib/mockData";
+import { getAuthUser, unauthorized } from "@/lib/auth";
 
 const ORDER_STATUS_MAP: Record<string, string> = {
   PENDING: "주문완료",
@@ -12,11 +11,26 @@ const ORDER_STATUS_MAP: Record<string, string> = {
 };
 
 const mapOrder = (order: any) => ({
-  ...order,
+  id: order.id,
+  userId: order.userId,
   status: ORDER_STATUS_MAP[order.status] ?? order.status,
+  totalPrice: order.totalPrice,
+  items: order.orderItems.map((item: any) => ({
+    id: item.id,
+    productId: item.productId,
+    productName: item.product?.name ?? "",
+    imageUrl: item.product?.imageUrl ?? "",
+    optionId: item.optionId,
+    color: item.option?.color ?? "",
+    size: item.option?.size ?? "",
+    price: item.price,
+    quantity: item.quantity,
+  })),
+  shippingAddressId: order.shippingAddressId,
+  createdAt: order.createdAt,
+  updatedAt: order.updatedAt,
 });
 
-// GET /api/orders/:id - 주문 상세
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
@@ -28,19 +42,13 @@ export async function GET(
     const { id } = await params;
     const order = await prisma.order.findFirst({
       where: { id: Number(id), userId: user.userId },
-      include: { orderItems: { include: { product: true } } },
+      include: {
+        orderItems: { include: { product: true, option: true } },
+      },
     });
 
     if (!order) {
-      const mock = MOCK_ORDERS.find(
-        (item) => item.id === Number(id) && item.userId === user.userId,
-      );
-      if (mock) return NextResponse.json(mock);
-
-      return NextResponse.json(
-        { message: "주문이 없습니다." },
-        { status: 404 },
-      );
+      return NextResponse.json({ message: "주문이 없습니다." }, { status: 404 });
     }
 
     return NextResponse.json(mapOrder(order));
@@ -49,7 +57,6 @@ export async function GET(
   }
 }
 
-// DELETE /api/orders/:id - 주문 취소
 export async function DELETE(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
@@ -64,10 +71,7 @@ export async function DELETE(
     });
 
     if (!order) {
-      return NextResponse.json(
-        { message: "주문이 없습니다." },
-        { status: 404 },
-      );
+      return NextResponse.json({ message: "주문이 없습니다." }, { status: 404 });
     }
     if (order.status !== "PENDING") {
       return NextResponse.json(

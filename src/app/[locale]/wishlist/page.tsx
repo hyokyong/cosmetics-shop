@@ -5,16 +5,12 @@ import { Heart } from "lucide-react";
 import { useWishlistStore } from "@store/wishlistStore";
 import { Button } from "@components/ui/button";
 import ProductCard from "@components/product/ProductCard";
-import { API_QUERY_ENABLED } from "@constants/index";
 import { useGetProducts } from "@/react-query/queries/useProducts";
 
 export default function WishlistPage() {
   const { productIds } = useWishlistStore();
 
-  const { data, isFetching } = useGetProducts(
-    { page: 0, size: 200 },
-    { enabled: API_QUERY_ENABLED.PRODUCTS },
-  );
+  const { data, isFetching } = useGetProducts({ page: 0, size: 200 });
 
   const allProducts = data?.content ?? [];
   const wishedProducts = allProducts.filter((p) => productIds.includes(p.id));
@@ -22,13 +18,7 @@ export default function WishlistPage() {
   if (wishedProducts.length === 0 && !isFetching) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
-        {!API_QUERY_ENABLED.PRODUCTS && productIds.length > 0 && (
-          <p className="mb-4 text-sm text-warning">
-            즐겨찾기 상품 정보는 <code className="rounded bg-warning-muted px-1 text-xs">API_QUERY_ENABLED.PRODUCTS</code>를
-            true로 설정한 뒤 불러옵니다.
-          </p>
-        )}
-        <Heart className="mx-auto h-16 w-16 text-gray-300" />
+<Heart className="mx-auto h-16 w-16 text-gray-300" />
         <h2 className="mt-4 text-xl font-semibold text-gray-700">즐겨찾기가 비어 있어요</h2>
         <p className="mt-2 text-sm text-gray-400">마음에 드는 상품을 즐겨찾기에 추가해보세요!</p>
         <Button className="mt-8 bg-primary-600 hover:bg-primary-700" asChild>

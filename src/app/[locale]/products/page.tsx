@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import ProductCard from "@components/product/ProductCard";
-import { CATEGORY_VALUES, API_QUERY_ENABLED } from "@constants/index";
+import { CATEGORY_VALUES } from "@constants/index";
 import { cn } from "@utils/cn";
 import { useGetProducts } from "@/react-query/queries/useProducts";
 
@@ -18,9 +18,7 @@ export default function ProductsPage() {
       ? { page: 0, size: 50 }
       : { page: 0, size: 50, category: selectedCategory };
 
-  const { data, isFetching, isError, error } = useGetProducts(listParams, {
-    enabled: API_QUERY_ENABLED.PRODUCTS,
-  });
+  const { data, isFetching, isError, error } = useGetProducts(listParams);
 
   const products = data?.content ?? [];
 
@@ -35,13 +33,7 @@ export default function ProductsPage() {
         </p>
       )}
 
-      {!API_QUERY_ENABLED.PRODUCTS && (
-        <p className="mb-4 rounded-lg border border-warning-border bg-warning-light px-4 py-3 text-sm text-warning">
-          {t("apiDisabled")}
-        </p>
-      )}
-
-      <div
+<div
         className="mb-8 flex flex-wrap gap-2"
         role="tablist"
         aria-label={t("categoryFilter")}
@@ -66,7 +58,7 @@ export default function ProductsPage() {
         ))}
       </div>
 
-      {!API_QUERY_ENABLED.PRODUCTS ? null : isFetching ? (
+      {isFetching ? (
         <div className="py-20 text-center text-gray-500">{tCommon("loading")}</div>
       ) : products.length === 0 ? (
         <div className="py-20 text-center text-gray-400">{t("noProducts")}</div>

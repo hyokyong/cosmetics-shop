@@ -37,13 +37,3 @@ export const QUERY_KEYS = {
   PARTNERS: "partners",
   USER: "user",
 } as const;
-
-/** 백엔드·인증 준비 후 `true`로 바꿔 실제 API 요청을 보냅니다. */
-export const API_QUERY_ENABLED = {
-  PRODUCTS: true,
-  PRODUCT_DETAIL: true,
-  ORDERS: true,
-  SHIPPING_ADDRESSES: true,
-  ADMIN_PARTNERS: true,
-  ADMIN_PRODUCTS: true,
-} as const;

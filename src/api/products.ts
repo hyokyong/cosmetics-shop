@@ -1,4 +1,4 @@
-import { axiosWithAuth } from "@/api/axiosInstance";
+import { axiosWithAuth, axiosService } from "@/api/axiosInstance";
 import {
   Product,
   ProductListResponse,
@@ -12,7 +12,7 @@ export const getProducts = async (params?: {
   category?: string;
   brandName?: string;
 }): Promise<ProductListResponse> => {
-  const { data } = await axiosWithAuth.get("/products", { params });
+  const { data } = await axiosService.get("/products", { params });
   return data;
 };
 

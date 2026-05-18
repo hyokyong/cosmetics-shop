@@ -11,26 +11,11 @@ import {
   usePutProduct,
   useDeleteProduct,
 } from "@/react-query/queries/useProducts";
-import { API_QUERY_ENABLED } from "@constants/index";
-
-// 목업 (로컬 테스트 시 주석 해제 후 `API_QUERY_ENABLED.ADMIN_PRODUCTS` 끄기)
-// const MOCK_PRODUCTS: Product[] = [
-//   { id: 1, name: "촉촉 수분크림 50ml", basePrice: 28000, imageUrl: "https://picsum.photos/seed/cosmetic1/100/100", category: "skincare", brandName: "이니스프리", isVisible: true, options: [], createdAt: new Date().toISOString() },
-//   { id: 2, name: "비타민C 세럼", basePrice: 45000, imageUrl: "https://picsum.photos/seed/cosmetic2/100/100", category: "skincare", brandName: "라로슈포제", isVisible: true, options: [], createdAt: new Date().toISOString() },
-//   { id: 3, name: "선크림 SPF50+", basePrice: 22000, imageUrl: "https://picsum.photos/seed/cosmetic3/100/100", category: "suncare", brandName: "아넥스", isVisible: false, options: [], createdAt: new Date().toISOString() },
-// ];
 
 const listParams = { page: 0, size: 50 } as const;
 
 export default function AdminProductsPage() {
-  const {
-    data,
-    isFetching,
-    isError,
-    error,
-  } = useGetProducts(listParams, {
-    enabled: API_QUERY_ENABLED.ADMIN_PRODUCTS,
-  });
+  const { data, isFetching, isError, error } = useGetProducts(listParams);
 
   const putProductMutation = usePutProduct();
   const deleteProductMutation = useDeleteProduct();
@@ -72,13 +57,17 @@ export default function AdminProductsPage() {
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-900">상품 관리</h1>
-        <Button className="bg-primary-600 hover:bg-primary-700">+ 상품 등록</Button>
+        <Button className="bg-primary-600 hover:bg-primary-700">
+          + 상품 등록
+        </Button>
       </div>
 
       {isError && (
         <p className="mb-4 text-sm text-error" role="alert">
           상품 목록을 불러오지 못했습니다.
-          {"message" in (error as Error) ? ` (${(error as Error).message})` : ""}
+          {"message" in (error as Error)
+            ? ` (${(error as Error).message})`
+            : ""}
         </p>
       )}
 
@@ -87,9 +76,15 @@ export default function AdminProductsPage() {
           <thead className="bg-gray-50 text-xs text-gray-500 uppercase">
             <tr>
               <th className="px-4 py-3 text-left">상품</th>
-              <th className="px-4 py-3 text-left hidden sm:table-cell">브랜드</th>
-              <th className="px-4 py-3 text-left hidden md:table-cell">카테고리</th>
-              <th className="px-4 py-3 text-right hidden sm:table-cell">가격</th>
+              <th className="px-4 py-3 text-left hidden sm:table-cell">
+                브랜드
+              </th>
+              <th className="px-4 py-3 text-left hidden md:table-cell">
+                카테고리
+              </th>
+              <th className="px-4 py-3 text-right hidden sm:table-cell">
+                가격
+              </th>
               <th className="px-4 py-3 text-center">노출</th>
               <th className="px-4 py-3 text-center">관리</th>
             </tr>
@@ -113,14 +108,28 @@ export default function AdminProductsPage() {
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
                       <div className="relative h-10 w-10 overflow-hidden rounded-lg bg-gray-100 shrink-0">
-                        <Image src={product.imageUrl} alt={product.name} fill className="object-cover" sizes="40px" />
+                        <Image
+                          src={product.imageUrl}
+                          alt={product.name}
+                          fill
+                          className="object-cover"
+                          sizes="40px"
+                        />
                       </div>
-                      <span className="font-medium text-gray-900 line-clamp-1">{product.name}</span>
+                      <span className="font-medium text-gray-900 line-clamp-1">
+                        {product.name}
+                      </span>
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-gray-500 hidden sm:table-cell">{product.brandName}</td>
-                  <td className="px-4 py-3 text-gray-500 hidden md:table-cell">{product.category}</td>
-                  <td className="px-4 py-3 text-right font-medium hidden sm:table-cell">{formatPrice(product.basePrice)}</td>
+                  <td className="px-4 py-3 text-gray-500 hidden sm:table-cell">
+                    {product.brandName}
+                  </td>
+                  <td className="px-4 py-3 text-gray-500 hidden md:table-cell">
+                    {product.category}
+                  </td>
+                  <td className="px-4 py-3 text-right font-medium hidden sm:table-cell">
+                    {formatPrice(product.basePrice)}
+                  </td>
                   <td className="px-4 py-3 text-center">
                     <button
                       type="button"
@@ -128,15 +137,18 @@ export default function AdminProductsPage() {
                       disabled={putProductMutation.isPending}
                       aria-label="노출 토글"
                     >
-                      {product.isVisible
-                        ? <Eye className="h-4 w-4 text-green-500 mx-auto" />
-                        : <EyeOff className="h-4 w-4 text-gray-300 mx-auto" />
-                      }
+                      {product.isVisible ? (
+                        <Eye className="h-4 w-4 text-green-500 mx-auto" />
+                      ) : (
+                        <EyeOff className="h-4 w-4 text-gray-300 mx-auto" />
+                      )}
                     </button>
                   </td>
                   <td className="px-4 py-3 text-center">
                     <div className="flex items-center justify-center gap-2">
-                      <Button variant="outline" size="sm" className="text-xs">수정</Button>
+                      <Button variant="outline" size="sm" className="text-xs">
+                        수정
+                      </Button>
                       <button
                         type="button"
                         onClick={() => removeProduct(product.id)}
@@ -157,7 +169,8 @@ export default function AdminProductsPage() {
 
       {data && data.totalElements > 0 && (
         <p className="mt-4 text-xs text-gray-500">
-          총 {data.totalElements}건 · {data.number + 1} / {data.totalPages}페이지
+          총 {data.totalElements}건 · {data.number + 1} / {data.totalPages}
+          페이지
         </p>
       )}
     </div>

@@ -1,20 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 import { getAuthUser, unauthorized, forbidden } from "@/lib/auth";
-import { MOCK_PARTNERS } from "@/lib/mockData";
-
-const globalForMock = globalThis as unknown as {
-  mockPartners?: { list: typeof MOCK_PARTNERS; nextId: number };
-};
-
-const initMockPartners = () => {
-  if (!globalForMock.mockPartners) {
-    globalForMock.mockPartners = {
-      list: [...MOCK_PARTNERS],
-      nextId: MOCK_PARTNERS.length + 1,
-    };
-  }
-  return globalForMock.mockPartners;
-};
 
 export async function PATCH(
   req: NextRequest,
@@ -27,8 +13,10 @@ export async function PATCH(
 
     const { id } = await params;
     const { isActive } = await req.json();
-    const store = initMockPartners();
-    const partner = store.list.find((item) => item.id === Number(id));
+
+    const partner = await prisma.partner.findUnique({
+      where: { id: Number(id) },
+    });
 
     if (!partner) {
       return NextResponse.json(
@@ -37,8 +25,12 @@ export async function PATCH(
       );
     }
 
-    partner.isActive = isActive;
-    return NextResponse.json(partner);
+    const updated = await prisma.partner.update({
+      where: { id: Number(id) },
+      data: { isActive },
+    });
+
+    return NextResponse.json(updated);
   } catch {
     return NextResponse.json({ message: "서버 에러" }, { status: 500 });
   }

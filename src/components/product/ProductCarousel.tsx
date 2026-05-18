@@ -3,17 +3,13 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useTranslations } from "next-intl";
-import { API_QUERY_ENABLED } from "@constants/index";
 import { useGetProducts } from "@/react-query/queries/useProducts";
 import ProductCard from "./ProductCard";
 
 export default function ProductCarousel() {
   const t = useTranslations("carousel");
   const tCommon = useTranslations("common");
-  const { data, isFetching } = useGetProducts(
-    { page: 0, size: 8 },
-    { enabled: API_QUERY_ENABLED.PRODUCTS },
-  );
+  const { data, isFetching } = useGetProducts({ page: 0, size: 8 });
 
   const products = data?.content ?? [];
 
@@ -30,15 +26,7 @@ export default function ProductCarousel() {
     );
   }
 
-  if (!API_QUERY_ENABLED.PRODUCTS) {
-    return (
-      <section aria-label={t("label")}>
-        <div className="py-8 text-center text-sm text-warning">{t("apiDisabled")}</div>
-      </section>
-    );
-  }
-
-  if (products.length === 0) {
+if (products.length === 0) {
     return (
       <section aria-label={t("label")}>
         <div className="py-8 text-center text-sm text-gray-400">{tCommon("empty")}</div>

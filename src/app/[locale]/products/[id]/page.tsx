@@ -11,14 +11,13 @@ import { formatPrice } from "@utils/format";
 import { cn } from "@utils/cn";
 import { Button } from "@components/ui/button";
 import { toast } from "@hooks/useToast";
-import { API_QUERY_ENABLED } from "@constants/index";
 import { useGetProduct } from "@/react-query/queries/useProducts";
 
 export default function ProductDetailPage() {
   const params = useParams();
   const id = Number(params.id);
   const idValid = Number.isFinite(id) && id > 0;
-  const queryEnabled = API_QUERY_ENABLED.PRODUCT_DETAIL && idValid;
+  const queryEnabled = idValid;
 
   const { data: product, isFetching, isError, error } = useGetProduct(id, {
     enabled: queryEnabled,
@@ -51,22 +50,7 @@ export default function ProductDetailPage() {
     );
   }
 
-  if (!API_QUERY_ENABLED.PRODUCT_DETAIL) {
-    return (
-      <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
-        <p className="text-gray-600">
-          상품 상세는 백엔드 연동 후 표시됩니다.{" "}
-          <code className="rounded bg-gray-100 px-1 text-xs">API_QUERY_ENABLED.PRODUCT_DETAIL</code>을
-          true로 설정하세요.
-        </p>
-        <Link href="/products" className="mt-4 inline-block text-primary-600 hover:underline">
-          상품 목록
-        </Link>
-      </div>
-    );
-  }
-
-  if (isFetching) {
+if (isFetching) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center text-gray-500 sm:px-6 lg:px-8">
         불러오는 중…

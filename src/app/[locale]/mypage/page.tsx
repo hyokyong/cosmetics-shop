@@ -11,11 +11,7 @@ import { User, Package, MapPin, LogOut } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { toast } from "@hooks/useToast";
 import { cn } from "@utils/cn";
-import { API_QUERY_ENABLED } from "@constants/index";
 import { orderStatusClass } from "@/config/design-tokens";
-
-// 목업 주문 (로컬 테스트 시 주석 해제 후 ORDERS 쿼리 `enabled` 끄기)
-// const MOCK_ORDERS = [ ... ];
 
 export default function MyPage() {
   const router = useRouter();
@@ -26,18 +22,14 @@ export default function MyPage() {
     isFetching: ordersLoading,
     isError: ordersError,
     error: ordersErr,
-  } = useGetOrders({
-    enabled: API_QUERY_ENABLED.ORDERS,
-  });
+  } = useGetOrders();
 
   const {
     data: addresses = [],
     isFetching: shippingLoading,
     isError: shippingError,
     error: shippingErr,
-  } = useGetShippingAddresses({
-    enabled: API_QUERY_ENABLED.SHIPPING_ADDRESSES,
-  });
+  } = useGetShippingAddresses();
 
   const handleLogout = () => {
     logout();
@@ -93,12 +85,7 @@ export default function MyPage() {
             </p>
           )}
 
-          {!API_QUERY_ENABLED.ORDERS ? (
-            <p className="text-sm text-gray-500">
-              주문 API는 <code className="rounded bg-gray-100 px-1 text-xs">API_QUERY_ENABLED.ORDERS</code>
-              를 true로 설정한 뒤 표시됩니다.
-            </p>
-          ) : ordersLoading ? (
+          {ordersLoading ? (
             <p className="text-sm text-gray-500">불러오는 중…</p>
           ) : orders.length === 0 ? (
             <p className="text-sm text-gray-500">주문 내역이 없습니다.</p>
@@ -110,7 +97,8 @@ export default function MyPage() {
                     <div>
                       <p className="text-sm font-medium text-gray-900">
                         {order.items[0]?.productName ?? "상품"}
-                        {order.items.length > 1 && ` 외 ${order.items.length - 1}건`}
+                        {order.items.length > 1 &&
+                          ` 외 ${order.items.length - 1}건`}
                       </p>
                       <p className="mt-1 text-xs text-gray-400">
                         {formatDate(order.createdAt)}
@@ -165,13 +153,7 @@ export default function MyPage() {
             </p>
           )}
 
-          {!API_QUERY_ENABLED.SHIPPING_ADDRESSES ? (
-            <p className="text-sm text-gray-500">
-              배송지 API는{" "}
-              <code className="rounded bg-gray-100 px-1 text-xs">API_QUERY_ENABLED.SHIPPING_ADDRESSES</code>
-              를 true로 설정한 뒤 표시됩니다.
-            </p>
-          ) : shippingLoading ? (
+          {shippingLoading ? (
             <p className="text-sm text-gray-500">불러오는 중…</p>
           ) : addresses.length === 0 ? (
             <div className="rounded-xl border p-4 text-center text-sm text-gray-500">

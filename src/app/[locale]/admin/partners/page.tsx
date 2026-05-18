@@ -16,35 +16,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Partner } from "@/types/index";
-import { API_QUERY_ENABLED } from "@constants/index";
-
-// 목업 파트너 데이터 (로컬 목업 사용 시 아래 주석 해제 후 `API_QUERY_ENABLED.ADMIN_PARTNERS` 끄기)
-// const MOCK_PARTNERS: Partner[] = [
-//   {
-//     id: 1,
-//     email: "innisfree@partner.com",
-//     brandName: "이니스프리",
-//     businessNumber: "123-45-67890",
-//     isActive: true,
-//     createdAt: "2024-01-01T00:00:00Z",
-//   },
-//   {
-//     id: 2,
-//     email: "lrp@partner.com",
-//     brandName: "라로슈포제",
-//     businessNumber: "234-56-78901",
-//     isActive: true,
-//     createdAt: "2024-02-01T00:00:00Z",
-//   },
-//   {
-//     id: 3,
-//     email: "cosrx@partner.com",
-//     brandName: "코스알엑스",
-//     businessNumber: "345-67-89012",
-//     isActive: false,
-//     createdAt: "2024-03-01T00:00:00Z",
-//   },
-// ];
 
 const schema = z.object({
   email: z.string().email("올바른 이메일을 입력해주세요"),
@@ -62,9 +33,7 @@ export default function AdminPartnersPage() {
     isFetching,
     isError,
     error,
-  } = useGetPartners({
-    enabled: API_QUERY_ENABLED.ADMIN_PARTNERS,
-  });
+  } = useGetPartners();
 
   const postPartnerMutation = usePostPartner();
   const patchActiveMutation = usePatchPartnerActive();
@@ -155,18 +124,14 @@ export default function AdminPartnersPage() {
                 {...register("password")}
               />
               {errors.password && (
-                <p className="text-xs text-error">
-                  {errors.password.message}
-                </p>
+                <p className="text-xs text-error">{errors.password.message}</p>
               )}
             </div>
             <div className="space-y-1.5">
               <Label>브랜드명</Label>
               <Input placeholder="브랜드명 입력" {...register("brandName")} />
               {errors.brandName && (
-                <p className="text-xs text-error">
-                  {errors.brandName.message}
-                </p>
+                <p className="text-xs text-error">{errors.brandName.message}</p>
               )}
             </div>
             <div className="space-y-1.5">
