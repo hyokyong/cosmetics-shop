@@ -16,6 +16,7 @@ import { CheckCircle2, XCircle } from "lucide-react";
 const schema = z
   .object({
     email: z.string().email("올바른 이메일 형식이 아닙니다"),
+    name: z.string().min(2, "이름은 2자 이상이어야 합니다"),
     password: z.string().min(8, "비밀번호는 8자 이상이어야 합니다"),
     passwordConfirm: z.string(),
   })
@@ -56,7 +57,7 @@ export default function SignupPage() {
 
   const onSubmit = (data: FormData) => {
     signup(
-      { email: data.email, password: data.password },
+      { email: data.email, password: data.password, name: data.name },
       {
         onSuccess: () => {
           toast({ title: "회원가입 완료!", description: "로그인해주세요" });
@@ -126,6 +127,21 @@ export default function SignupPage() {
               <p className="flex items-center gap-1 text-xs text-error">
                 <XCircle className="h-3 w-3" /> 이미 사용 중인 이메일입니다
               </p>
+            )}
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="name">이름</Label>
+            <Input
+              id="name"
+              type="text"
+              placeholder="이름을 입력해주세요"
+              autoComplete="name"
+              {...register("name")}
+              className={errors.name ? "border-error" : ""}
+            />
+            {errors.name && (
+              <p className="text-xs text-error">{errors.name.message}</p>
             )}
           </div>
 

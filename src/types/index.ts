@@ -1,5 +1,5 @@
 // ==================== AUTH ====================
-export type UserRole = 'CUSTOMER' | 'ADMIN' | 'PARTNER';
+export type UserRole = "CUSTOMER" | "ADMIN" | "PARTNER";
 
 export interface User {
   id: number;
@@ -20,6 +20,7 @@ export interface LoginRequest {
 
 export interface SignupRequest {
   email: string;
+  name: string;
   password: string;
 }
 
@@ -82,7 +83,7 @@ export interface ProductCreateRequest {
   basePrice: number;
   isVisible: boolean;
   category: string;
-  options: Omit<ProductOption, 'id'>[];
+  options: Omit<ProductOption, "id">[];
 }
 
 // ==================== CART ====================
@@ -99,7 +100,12 @@ export interface CartItem {
 }
 
 // ==================== ORDER ====================
-export type OrderStatus = '주문완료' | '배송준비중' | '배송중' | '배송완료' | '취소';
+export type OrderStatus =
+  | "주문완료"
+  | "배송준비중"
+  | "배송중"
+  | "배송완료"
+  | "취소";
 
 export interface OrderItem {
   id: number;
