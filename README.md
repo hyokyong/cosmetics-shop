@@ -235,3 +235,30 @@ Disallow: /*/cart
 Disallow: /*/wishlist
 Sitemap: {SITE_URL}/sitemap.xml
 ```
+
+## 성능 최적화
+
+불필요한 재렌더링과 중복 연산을 줄이기 위해 React의 `memo`, `useMemo`, `useCallback`을 적용했습니다.
+
+### React.memo
+
+| 컴포넌트 | 적용 이유 |
+| -------- | --------- |
+| `ProductCard` | 상품 목록에서 N개가 반복 렌더됨. 부모 재렌더 시 `product` prop이 같으면 카드 전체를 스킵 |
+
+### useMemo
+
+| 위치 | 대상 | 효과 |
+| ---- | ---- | ---- |
+| `products/page.tsx` | `listParams` 객체 | 카테고리가 바뀔 때만 새 객체 생성 → React Query 캐시 안정화 |
+| `wishlist/page.tsx` | `allProducts`, `wishedProducts` | 데이터 리페치 시 불필요한 filter 연산 방지 |
+| `cart/page.tsx` | `totalPrice()` | 렌더당 3번 호출되던 연산을 1번으로 축소 |
+| `ReviewSection.tsx` | `averageRating` | 리뷰 목록이 바뀔 때만 reduce 재계산 |
+
+### useCallback
+
+| 위치 | 대상 | 효과 |
+| ---- | ---- | --------- |
+| `ProductCard.tsx` | `handleAddToCart`, `handleWishlist` | `memo()`와 함께 사용 — prop 참조 유지로 불필요한 리렌더 방지 |
+| `ReviewSection.tsx` | `handleSubmit` | content·rating이 바뀔 때만 새 함수 생성 |
+| `Gnb.tsx` | `categoryHref` | 의존성 없음 — 항상 동일 참조 유지 |
